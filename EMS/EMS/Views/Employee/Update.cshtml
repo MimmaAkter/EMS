@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="single-pro-review-area mt-t-30 mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-payment-inner-st">
+                        <ul id="myTabedu1" class="tab-review-design">
+                            <li class="active"><a href="#description">Basic Information</a></li>
+                            <li><a href="#reviews"> Account Information</a></li>
+                            <li><a href="#INFORMATION">Qualification</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content custom-product-edit">
+                            <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div id="dropzone1" class="pro-ad">
+                                                @foreach (System.Data.DataRow dr in ViewBag.data.Rows)
+                                                {
+                                                    <form class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input name="EMPLOYEEID" value="@dr["EMPLOYEEID"]" type="text" class="form-control" placeholder="EMPLOYEEID">
+                                                                    @*@Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })*@
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="EMPLOYEENAME" value="@dr["EMPLOYEENAME"]" type="text" class="form-control" placeholder="EMPLOYEENAME">
+                                                                    @*@Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })*@
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="DOB" value="@dr["DOB"]" type="text" class="form-control" placeholder="Date of Birth">
+                                                                </div>
+                                                                <div class="form-group res-mg-t-15">
+                                                                    <input name="SEX" value="@dr["SEX"]" type="text" class="form-control" placeholder="Date of Birth">                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="EMPCONTACTNO"  value="@dr["EMPCONTACTNO"]" type="number" class="form-control" placeholder="Mobile no.">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    @Html.DropDownList("DEPARTMENTID", ViewBag.DEPARTMENTID as SelectList, "Select Department", new { htmlAttributes = new { @class = "form-control", @name = "DEPARTMENTID" } })
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="BASICSALARY" value="@dr["BASICSALARY"]" type="text" class="form-control" placeholder="BASICSALARY">
+                                                                    @*@Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "text", @placeholder = "Basic Salary" } })*@
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="text" class="form-control" placeholder="GROSSWAGES">
+                                                                    @*@Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wage" } })*@
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="NID" value="@dr["NID"]" type="text" class="form-control" placeholder="NID">
+                                                                </div>
+                                                                <div class="form-group alert-up-pd">
+                                                                        <div class="dz-message needsclick download-custom">
+                                                                            <input type="file" value="@dr["PHOTO"]" class="form-control" id="image" name="image" />
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                
+                                                                <div class="form-group">
+                                                                    @Html.DropDownList("DESIGNATIONID", ViewBag.DESIGNATIONID as SelectList, "Select Designation", new { htmlAttributes = new { @class = "form-control", @name = "DESIGNATIONID", @value = "@dr['DESIGNATIONID']" } })                                                                
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="BASICSALARY" value="@dr["BASICSALARY"]" type="number" class="form-control" placeholder="BASICSALARY">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="number" class="form-control" placeholder="GROSSWAGES">                                                                   
+                                                                </div>
+                                                                <div class="form-group res-mg-t-15">
+                                                                    <textarea name="EMPPRESADDRESS" value="@dr["EMPPRESADDRESS"]" placeholder="Experience"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>                                                                    
+                                                                    <button class="btn btn-primary waves-effect waves-light">Cancel</button>                                                                 
+                                                                </div>                                                              
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-tab-list tab-pane fade" id="reviews">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="devit-card-custom">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Account No">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Bank Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Branch Name">
+                                                        </div>
+                                                        <a href="#!" class="btn btn-primary waves-effect waves-light">Submit</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="devit-card-custom">
+                                                        <div class="form-group">
+                                                            <input type="url" class="form-control" placeholder="Degree">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="url" class="form-control" placeholder="Instution Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="url" class="form-control" placeholder="Result">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="url" class="form-control" placeholder="Board">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
