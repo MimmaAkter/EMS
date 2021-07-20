@@ -9,5 +9,6 @@ namespace EMS.Models.BusinessBase
     {
         public string DEPARTMENTID { get; set; }
         public string DEPARTMENT { get; set; }
+        public Nullable<bool> DEPTGROUPID { get; set; }
     }
 }

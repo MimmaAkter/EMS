@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EMS.Models.BusinessBase
 {
@@ -43,5 +44,7 @@ namespace EMS.Models.BusinessBase
         public string ImageUrl { get; set; }
         public byte[] PHOTO { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
+        public SelectList DepartmentList { get; set; }
+        public SelectList DesignationList { get; set; }
     }
 }

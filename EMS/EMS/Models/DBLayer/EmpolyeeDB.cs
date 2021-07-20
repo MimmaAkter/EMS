@@ -60,6 +60,62 @@ namespace EMS.Models.DBLayer
             da.Fill(ds);
             return ds;
         }
+        public List<EmployeeB> GetStudent()
+        {
+            //connection();
+            List<EmployeeB> studentlist = new List<EmployeeB>();
+
+            OracleCommand cmd = new OracleCommand("GetEmployeeList", constr);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.Add("pEmployeeID", OracleDbType.Varchar2).Value = id;
+            cmd.Parameters.Add("one_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+            //cmd.Parameters.Add("many_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+            OracleDataAdapter sd = new OracleDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            constr.Open();
+            sd.Fill(dt);
+            constr.Close();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                studentlist.Add(
+                    new EmployeeB
+                    {
+                        EMPLOYEEID = Convert.ToString(dr["EMPLOYEEID"]),
+                        EMPLOYEENAME = Convert.ToString(dr["EMPLOYEENAME"]),
+                        DEPARTMENTID = Convert.ToString(dr["DEPARTMENTID"]),
+                        ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"])
+                    });
+            }
+            return studentlist;
+        }
+
+
+        public List<EmployeeB> DepartmentLookUp()
+        {
+            List<EmployeeB> List = new List<EmployeeB>();
+            using (OracleCommand com = new OracleCommand("GetDepartmentLookUp", constr))
+            {
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+                using (OracleDataAdapter da = new OracleDataAdapter())
+                {
+                    com.Connection = constr;
+                    constr.Open();
+                    da.SelectCommand = com;
+                    OracleDataReader dr = com.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        EmployeeB obj = new EmployeeB();
+                        obj.DEPARTMENT = dr["DEPARTMENT"].ToString();
+                        obj.DEPARTMENTID = dr["DEPARTMENTID"].ToString();
+                        List.Add(obj);
+                    }
+                }
+                return List;
+            };
+        }
 
         public void Update(EmployeeB data)
         {
@@ -74,6 +130,7 @@ namespace EMS.Models.DBLayer
             cmd.Parameters.Add("pGROSSWAGES", data.GROSSWAGES);
             cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
             cmd.Parameters.Add("pNID", data.NID);
+            cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
             //cmd.Parameters.Add("pDESIGNATIONID", data.DESIGNATIONID);
             //cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
             //cmd.Parameters.Add("pEMPPRESADDRESS", data.EMPPRESADDRESS);
@@ -121,6 +178,38 @@ namespace EMS.Models.DBLayer
                 return List;
             };
         }
+        #endregion
+
+        #region List Converter
+        public List<EmployeeB> GetEmployeeBList()
+        {
+            DataTable ResultDT = new DataTable();
+            //ResultDT = _DataBAL; // Call BusinessLogic to fill DataTable, Here your ResultDT will get the result in which you will be having single or multiple rows with columns "EmployeeBId,RoleNumber and Name"  
+            List<EmployeeB> EmployeeBlist = new List<EmployeeB>();
+            EmployeeBlist = ConvertToList<EmployeeB>(ResultDT);
+            
+            return EmployeeBlist;
+        }
+        public static List<T> ConvertToList<T>(DataTable dt)
+            {
+                var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
+                var properties = typeof(T).GetProperties();
+                return dt.AsEnumerable().Select(row => {
+                    var objT = Activator.CreateInstance<T>();
+                    foreach (var pro in properties)
+                    {
+                        if (columnNames.Contains(pro.Name.ToLower()))
+                        {
+                            try
+                            {
+                                pro.SetValue(objT, row[pro.Name]);
+                            }
+                            catch (Exception ex) { }
+                        }
+                    }
+                    return objT;
+                }).ToList();
+            }
         #endregion
 
     }

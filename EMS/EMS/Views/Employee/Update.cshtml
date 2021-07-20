@@ -1,4 +1,6 @@
-﻿
+﻿@model EMS.Models.BusinessBase.EmployeeB
+@*@using System.Data
+@model DataSet*@
 @{
     ViewBag.Title = "Update";
 }
@@ -23,60 +25,74 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="review-content-section">
                                             <div id="dropzone1" class="pro-ad">
-                                                @foreach (System.Data.DataRow dr in ViewBag.data.Rows)
-                                                {
+                                                @*@foreach (var dr in Model)
+                                                {*@
                                                     <form class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                @*@Html.HiddenFor(model=>model.EMPLOYEEID)*@
                                                                 <div class="form-group">
-                                                                    <input name="EMPLOYEEID" value="@dr["EMPLOYEEID"]" type="text" class="form-control" placeholder="EMPLOYEEID">
-                                                                    @*@Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })*@
+                                                                    @*<input name="EMPLOYEEID" value="@dr["EMPLOYEEID"]" type="text" class="form-control" placeholder="EMPLOYEEID">*@
+                                                                    @Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="EMPLOYEENAME" value="@dr["EMPLOYEENAME"]" type="text" class="form-control" placeholder="EMPLOYEENAME">
-                                                                    @*@Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })*@
+                                                                    @*<input name="EMPLOYEENAME" value="@dr["EMPLOYEENAME"]" type="text" class="form-control" placeholder="EMPLOYEENAME">*@
+                                                                    @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="DOB" value="@dr["DOB"]" type="text" class="form-control" placeholder="Date of Birth">
+                                                                    @*<input name="DOB" value="@dr["DOB"]" type="text" class="form-control" placeholder="Date of Birth">*@
                                                                 </div>
                                                                 <div class="form-group res-mg-t-15">
-                                                                    <input name="SEX" value="@dr["SEX"]" type="text" class="form-control" placeholder="Date of Birth">                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="EMPCONTACTNO"  value="@dr["EMPCONTACTNO"]" type="number" class="form-control" placeholder="Mobile no.">
+                                                                    @*<input name="SEX" value="@dr["SEX"]" type="text" class="form-control" placeholder="Date of Birth">*@                                                                
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    @Html.DropDownList("DEPARTMENTID", ViewBag.DEPARTMENTID as SelectList, "Select Department", new { htmlAttributes = new { @class = "form-control", @name = "DEPARTMENTID" } })
+                                                                    @*<input name="EMPCONTACTNO"  value="@dr["EMPCONTACTNO"]" type="number" class="form-control" placeholder="Mobile no.">*@
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="BASICSALARY" value="@dr["BASICSALARY"]" type="text" class="form-control" placeholder="BASICSALARY">
+                                                                    @*@Html.DropDownListFor(model=>model.DEPARTMENTID, Model.DepartmentList as SelectList, "Select Department", new { htmlAttributes = new { @class = "form-control", @name = "DEPARTMENTID" } }))*@
+                                                                    @*@Html.DropDownListFor(model=>model.DEPARTMENTID, new SelectList(ViewBag.DEPARTMENTID, "DEPARTMENTID", "DEPARTMENT"), "Select Department", htmlAttributes:new { @class = "form-control" })*@
+                                                                    @Html.DropDownListFor(model => model.DEPARTMENTID, Model.DepartmentList as SelectList, "Select Department", new { @class = "form-control" })
+                                                                    @*<select id="ddlCity" class="form-control">
+                                                                        
+                                                                    </select>*@
+                                                                    @*<input name="DEPARTMENTID" value="@dr["DEPARTMENTID"]" type="text" class="form-control" placeholder="DEPARTMENTID">*@
+                                                                </div>
+                                                                @*<div class="form-group">
+                                                                    <select name="DEPARTMENTID" class="form-control">
+                                                                       
+                                                                        <option value="@dr["DEPARTMENTID"]"></option>                                                                       
+                                                                    </select>
+                                                                </div>*@
+                                                                <div class="form-group">
+                                                                    @*<input name="BASICSALARY" value="@dr["BASICSALARY"]" type="text" class="form-control" placeholder="BASICSALARY">*@
                                                                     @*@Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "text", @placeholder = "Basic Salary" } })*@
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="text" class="form-control" placeholder="GROSSWAGES">
+                                                                    @*<input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="text" class="form-control" placeholder="GROSSWAGES">*@
                                                                     @*@Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wage" } })*@
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="NID" value="@dr["NID"]" type="text" class="form-control" placeholder="NID">
+                                                                    @*<input name="NID" value="@dr["NID"]" type="text" class="form-control" placeholder="NID">*@
                                                                 </div>
                                                                 <div class="form-group alert-up-pd">
                                                                         <div class="dz-message needsclick download-custom">
-                                                                            <input type="file" value="@dr["PHOTO"]" class="form-control" id="image" name="image" />
+                                                                            @*<input type="file" value="@dr["PHOTO"]" class="form-control" id="image" name="image" />*@
                                                                         </div>
                                                                     </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 
                                                                 <div class="form-group">
-                                                                    @Html.DropDownList("DESIGNATIONID", ViewBag.DESIGNATIONID as SelectList, "Select Designation", new { htmlAttributes = new { @class = "form-control", @name = "DESIGNATIONID", @value = "@dr['DESIGNATIONID']" } })                                                                
+                                                                    @*@Html.DropDownListFor(model => model.DESIGNATIONID, Model.DesignationList as SelectList, "Select Designation", new { htmlAttributes = new { @class = "form-control", @name = "DESIGNATIONID", @value = "@dr['DESIGNATIONID']" } })*@                                                                
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="BASICSALARY" value="@dr["BASICSALARY"]" type="number" class="form-control" placeholder="BASICSALARY">
+                                                                    @*<input name="BASICSALARY" value="@dr["BASICSALARY"]" type="number" class="form-control" placeholder="BASICSALARY">*@
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="number" class="form-control" placeholder="GROSSWAGES">                                                                   
+                                                                    @*<input name="GROSSWAGES" value="@dr["GROSSWAGES"]" type="number" class="form-control" placeholder="GROSSWAGES">*@                                                                   
                                                                 </div>
                                                                 <div class="form-group res-mg-t-15">
-                                                                    <textarea name="EMPPRESADDRESS" value="@dr["EMPPRESADDRESS"]" placeholder="Experience"></textarea>
+                                                                    @*<textarea name="EMPPRESADDRESS" value="@dr["EMPPRESADDRESS"]" placeholder="Experience"></textarea>*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -89,7 +105,7 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                }
+                                                @*}*@
                                             </div>
                                         </div>
                                     </div>
@@ -153,4 +169,33 @@
         </div>
     </div>
 }
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+function getCityName(data) {
+    $('#ddlCity').empty();
+    if (data != 0) {
+        $.ajax({
+            type: "POST",
+            url: "/Employee/GetDepartment",
+            data: { 'DEPARTMENTID': data },
+            cache: false,
+            //contentType: "application/json",
+            datatype: "JSON",
+            success: function (result) {
+                var cityData = result.Data;
+                var defaultV = new Option("--Select--", 0, true);
+                $('#ddlCity').append(defaultV);
+                for (var i = 0; i < cityData.length; i++) {
+                    var opt = new Option(cityData[i].DEPARTMENT, cityData[i].DEPARTMENTID);
+                    $('#ddlCity').append(opt);
+                }
+            }
+        });
+    }
+    else {
+        alert('Select State');
+    }
+}
+</script>
 
