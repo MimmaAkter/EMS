@@ -60,14 +60,14 @@ namespace EMS.Models.DBLayer
             da.Fill(ds);
             return ds;
         }
-        public List<EmployeeB> GetStudent()
+        public List<EmployeeB> GetEmployee(string id)
         {
             //connection();
-            List<EmployeeB> studentlist = new List<EmployeeB>();
+            List<EmployeeB> employeelist = new List<EmployeeB>();
 
-            OracleCommand cmd = new OracleCommand("GetEmployeeList", constr);
+            OracleCommand cmd = new OracleCommand("GetEmployeeInfo", constr);
             cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.Add("pEmployeeID", OracleDbType.Varchar2).Value = id;
+            cmd.Parameters.Add("pEmployeeID", OracleDbType.Varchar2).Value = id;
             cmd.Parameters.Add("one_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
             //cmd.Parameters.Add("many_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
             OracleDataAdapter sd = new OracleDataAdapter(cmd);
@@ -79,43 +79,69 @@ namespace EMS.Models.DBLayer
 
             foreach (DataRow dr in dt.Rows)
             {
-                studentlist.Add(
+                employeelist.Add(
                     new EmployeeB
                     {
                         EMPLOYEEID = Convert.ToString(dr["EMPLOYEEID"]),
                         EMPLOYEENAME = Convert.ToString(dr["EMPLOYEENAME"]),
                         DEPARTMENTID = Convert.ToString(dr["DEPARTMENTID"]),
-                        ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"])
+                        DESIGNATIONID = Convert.ToString(dr["DESIGNATIONID"]),
+                        EMPCONTACTNO = Convert.ToString(dr["EMPCONTACTNO"]),
+                        EMPPARADDRESS = Convert.ToString(dr["EMPPARADDRESS"]),
+                        EMPPRESADDRESS = Convert.ToString(dr["EMPPRESADDRESS"]),
+                        EXPERIENCE = Convert.ToString(dr["EXPERIENCE"]),
+                        ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"]),
+                        BANKID = Convert.ToString(dr["BANKID"]),
+                        BASICSALARY = Convert.ToDecimal(dr["BASICSALARY"]),
+                        BLOODGROUPID = Convert.ToInt16(dr["BLOODGROUPID"]),
+                        DOB = Convert.ToDateTime(dr["DOB"]),
+                        FATHERSNAME = Convert.ToString(dr["FATHERSNAME"]),
+                        MOTHERSNAME = Convert.ToString(dr["MOTHERSNAME"]),
+                        SPOUSENAME = Convert.ToString(dr["SPOUSENAME"]),
+                        HOUSERENT = Convert.ToDecimal(dr["HOUSERENT"]),
+                        GROSSWAGES = Convert.ToDecimal(dr["GROSSWAGES"]),
+                        NID = Convert.ToString(dr["NID"]),
+                        SEX = Convert.ToString(dr["SEX"]),
+                        RELIGIONID = Convert.ToInt16(dr["RELIGIONID"]),
+                        MEDICAL = Convert.ToDecimal(dr["MEDICAL"]),
+                        ServiceLength = Convert.ToString(dr["ServiceLength"]),
+                        JOININGDATE = Convert.ToDateTime(dr["JOININGDATE"]),
+                        //RGNSUBDATE = Convert.ToDateTime(dr["RGNSUBDATE"]),
+                        EMPPASSWORD = Convert.ToString(dr["EMPPASSWORD"]),
+                        EMPSTATUS = Convert.ToString(dr["EMPSTATUS"]),
+                        PHOTO= (byte[])dr["PHOTO"]
+                        //RESIGNDATE = Convert.ToDateTime(dr["RESIGNDATE"])
+
                     });
             }
-            return studentlist;
+            return employeelist;
         }
 
 
-        public List<EmployeeB> DepartmentLookUp()
-        {
-            List<EmployeeB> List = new List<EmployeeB>();
-            using (OracleCommand com = new OracleCommand("GetDepartmentLookUp", constr))
-            {
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
-                using (OracleDataAdapter da = new OracleDataAdapter())
-                {
-                    com.Connection = constr;
-                    constr.Open();
-                    da.SelectCommand = com;
-                    OracleDataReader dr = com.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        EmployeeB obj = new EmployeeB();
-                        obj.DEPARTMENT = dr["DEPARTMENT"].ToString();
-                        obj.DEPARTMENTID = dr["DEPARTMENTID"].ToString();
-                        List.Add(obj);
-                    }
-                }
-                return List;
-            };
-        }
+        //public List<EmployeeB> DepartmentLookUp()
+        //{
+        //    List<EmployeeB> List = new List<EmployeeB>();
+        //    using (OracleCommand com = new OracleCommand("GetDepartmentLookUp", constr))
+        //    {
+        //        com.CommandType = CommandType.StoredProcedure;
+        //        com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+        //        using (OracleDataAdapter da = new OracleDataAdapter())
+        //        {
+        //            com.Connection = constr;
+        //            constr.Open();
+        //            da.SelectCommand = com;
+        //            OracleDataReader dr = com.ExecuteReader();
+        //            while (dr.Read())
+        //            {
+        //                EmployeeB obj = new EmployeeB();
+        //                obj.DEPARTMENT = dr["DEPARTMENT"].ToString();
+        //                obj.DEPARTMENTID = dr["DEPARTMENTID"].ToString();
+        //                List.Add(obj);
+        //            }
+        //        }
+        //        return List;
+        //    };
+        //}
 
         public void Update(EmployeeB data)
         {

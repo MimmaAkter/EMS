@@ -33,6 +33,7 @@ namespace EMS.Controllers
             {
                 Session["USERID"] = user.EMPLOYEEID;
                 Session["USERNAME"] = user.EMPLOYEENAME;
+                //Session["PHOTO"] = user.PHOTO;
                 return RedirectToAction("Index", "Employee");                           
             }
         }

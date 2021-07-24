@@ -60,7 +60,46 @@
     <link rel="stylesheet" href="/hrms_master/css/responsive.css">
     <!-- modernizr JS
         ============================================ -->
+    <!-- x-editor CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/editor/select2.css">
+    <link rel="stylesheet" href="/hrms_master/css/editor/datetimepicker.css">
+    <link rel="stylesheet" href="/hrms_master/css/editor/bootstrap-editable.css">
+    <link rel="stylesheet" href="/hrms_master/css/editor/x-editor-style.css">
+    <!-- normalize CSS
+            ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="/hrms_master/css/data-table/bootstrap-editable.css">
+    <!-- calendar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="/hrms_master/css/calendar/fullcalendar.print.min.css">
+    <!-- touchspin CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/touchspin/jquery.bootstrap-touchspin.min.css">
+    <!-- datapicker CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/datapicker/datepicker3.css">
+    <!-- forms CSS
+        ============================================ -->
+    @*<link rel="stylesheet" href="/hrms_master/css/form/themesaller-forms.css">*@
+    <!-- colorpicker CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/colorpicker/colorpicker.css">
+    <!-- select2 CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/select2/select2.min.css">
+    <!-- chosen CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/chosen/bootstrap-chosen.css">
+    <!-- ionRangeSlider CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/hrms_master/css/ionRangeSlider/ion.rangeSlider.css">
+    <link rel="stylesheet" href="/hrms_master/css/ionRangeSlider/ion.rangeSlider.skinFlat.css">   
+
     <script src="/hrms_master/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
@@ -89,50 +128,9 @@
                                         <span class="mini-click-non">Unique Intro</span>
                                     </a>
                                     <ul class="submenu-angle" aria-expanded="true">
-                                        <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
-                                        @*<li><a title="Dashboard v.2" href="index-1.html"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
-                                            <li><a title="Dashboard v.3" href="index-2.html"><span class="mini-sub-pro">Dashboard v.3</span></a></li>*@
+                                        <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>                                      
                                         <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Analytics</span></a></li>
                                         <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-                                </li>
-                                <li>
-                                    <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Projects</span></a>
-                                    <ul class="submenu-angle" aria-expanded="false">
-                                        <li><a title="All Professors" href="all-professors.html"><span class="mini-sub-pro">All Projects</span></a></li>
-                                        <li><a title="Add Professor" href="add-professor.html"><span class="mini-sub-pro">Add Project</span></a></li>
-                                        <li><a title="Edit Professor" href="edit-professor.html"><span class="mini-sub-pro">Edit Project</span></a></li>
-                                        <li><a title="Professor Profile" href="professor-profile.html"><span class="mini-sub-pro">Project Profile</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Employees</span></a>
-                                    <ul class="submenu-angle" aria-expanded="false">
-                                        <li>@Html.ActionLink("All Employees", "Show_data", "Employee")</li>
-                                        <li>@Html.ActionLink("Add Employee", "Create", "Home")</li>
-                                        <li><a title="Edit Employee" href="/hrms_master/edit-student.html"><span class="mini-sub-pro">Edit Employee</span></a></li>
-                                        <li><a title="Employee Profile" href="/hrms_master/student-profile.html"><span class="mini-sub-pro">Employee Profile</span></a></li>
-                                    </ul>
-                                </li>
-                                @*<li>
-                                        <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
-                                        <ul class="submenu-angle" aria-expanded="false">
-                                            <li><a title="All Courses" href="all-courses.html"><span class="mini-sub-pro">All Courses</span></a></li>
-                                            <li><a title="Add Courses" href="add-course.html"><span class="mini-sub-pro">Add Course</span></a></li>
-                                            <li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
-                                            <li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-                                            <li><a title="course Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
-                                        </ul>
-                                    </li>*@
-                                <li>
-                                    <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
-                                    <ul class="submenu-angle" aria-expanded="false">
-                                        <li><a title="All Library" href="library-assets.html"><span class="mini-sub-pro">Library Assets</span></a></li>
-                                        <li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
-                                        <li><a title="Edit Library" href="edit-library-assets.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -142,80 +140,26 @@
                                         <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
                                         <li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
                                     </ul>
-                                </li>
+                                </li>                                  
                                 <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Mailbox</span></a>
+                                    <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Employees</span></a>
                                     <ul class="submenu-angle" aria-expanded="false">
-                                        <li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
-                                        <li><a title="View Mail" href="mailbox-view.html"><span class="mini-sub-pro">View Mail</span></a></li>
-                                        <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
+                                        <li>@Html.ActionLink("All Employees", "AllEmployees", "Employee")</li>
+                                        <li>@Html.ActionLink("Add Employee", "Create", "Employee")</li>                                        
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Interface</span></a>
-                                    <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="false">
-                                        <li><a title="Google Map" href="google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
-                                        <li><a title="Data Maps" href="data-maps.html"><span class="mini-sub-pro">Data Maps</span></a></li>
-                                        <li><a title="Pdf Viewer" href="pdf-viewer.html"><span class="mini-sub-pro">Pdf Viewer</span></a></li>
-                                        <li><a title="X-Editable" href="x-editable.html"><span class="mini-sub-pro">X-Editable</span></a></li>
-                                        <li><a title="Code Editor" href="code-editor.html"><span class="mini-sub-pro">Code Editor</span></a></li>
-                                        <li><a title="Tree View" href="tree-view.html"><span class="mini-sub-pro">Tree View</span></a></li>
-                                        <li><a title="Preloader" href="preloader.html"><span class="mini-sub-pro">Preloader</span></a></li>
-                                        <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a></li>
-                                    </ul>
+                                    @Html.ActionLink("Attendance", "Attendance", "Attendance", htmlAttributes: new { @class = "educate-icon educate-event icon-wrap sub-icon-mg" } )
                                 </li>
                                 <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Charts</span></a>
-                                    <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="false">
-                                        <li><a title="Bar Charts" href="bar-charts.html"><span class="mini-sub-pro">Bar Charts</span></a></li>
-                                        <li><a title="Line Charts" href="line-charts.html"><span class="mini-sub-pro">Line Charts</span></a></li>
-                                        <li><a title="Area Charts" href="area-charts.html"><span class="mini-sub-pro">Area Charts</span></a></li>
-                                        <li><a title="Rounded Charts" href="rounded-chart.html"><span class="mini-sub-pro">Rounded Charts</span></a></li>
-                                        <li><a title="C3 Charts" href="c3.html"><span class="mini-sub-pro">C3 Charts</span></a></li>
-                                        <li><a title="Sparkline Charts" href="sparkline.html"><span class="mini-sub-pro">Sparkline Charts</span></a></li>
-                                        <li><a title="Peity Charts" href="peity.html"><span class="mini-sub-pro">Peity Charts</span></a></li>
-                                    </ul>
+                                    <a title="Landing Page" href="/Views/Employee/Create.cshtml" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Salary</span></a>
                                 </li>
                                 <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Data Tables</span></a>
-                                    <ul class="submenu-angle" aria-expanded="false">
-                                        <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Static Table</span></a></li>
-                                        <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Data Table</span></a></li>
-                                    </ul>
+                                    <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-cloud icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Provident Fund</span></a>
                                 </li>
                                 <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Forms Elements</span></a>
-                                    <ul class="submenu-angle form-mini-nb-dp" aria-expanded="false">
-                                        <li><a title="Basic Form Elements" href="basic-form-element.html"><span class="mini-sub-pro">Bc Form Elements</span></a></li>
-                                        <li><a title="Advance Form Elements" href="advance-form-element.html"><span class="mini-sub-pro">Ad Form Elements</span></a></li>
-                                        <li><a title="Password Meter" href="password-meter.html"><span class="mini-sub-pro">Password Meter</span></a></li>
-                                        <li><a title="Multi Upload" href="multi-upload.html"><span class="mini-sub-pro">Multi Upload</span></a></li>
-                                        <li><a title="Text Editor" href="tinymc.html"><span class="mini-sub-pro">Text Editor</span></a></li>
-                                        <li><a title="Dual List Box" href="dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
-                                    <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
-                                        <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
-                                        <li><a title="Alerts" href="alerts.html"><span class="mini-sub-pro">Alerts</span></a></li>
-                                        <li><a title="Modals" href="modals.html"><span class="mini-sub-pro">Modals</span></a></li>
-                                        <li><a title="Buttons" href="buttons.html"><span class="mini-sub-pro">Buttons</span></a></li>
-                                        <li><a title="Tabs" href="tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
-                                        <li><a title="Accordion" href="accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
-                                    </ul>
-                                </li>
-                                <li id="removable">
-                                    <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
-                                    <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
-                                        <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
-                                        <li><a title="Register" href="register.html"><span class="mini-sub-pro">Register</span></a></li>
-                                        <li><a title="Lock" href="lock.html"><span class="mini-sub-pro">Lock</span></a></li>
-                                        <li><a title="Password Recovery" href="password-recovery.html"><span class="mini-sub-pro">Password Recovery</span></a></li>
-                                        <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
-                                        <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
-                                    </ul>
-                                </li>
+                                    <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Leave Application</span></a>
+                                </li>                                                                                                                                           
                             </ul>
                         }
                     }
@@ -263,12 +207,11 @@
                                                     @Html.ActionLink("Create Profile", "Create", "Employee")
                                                 </li>                                               
                                                 <li class="nav-item dropdown res-dis-nn">
-                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Project <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Settings<span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
-                                                        <a href="#" class="dropdown-item">Documentation</a>
-                                                        <a href="#" class="dropdown-item">Expert Backend</a>
-                                                        <a href="#" class="dropdown-item">Expert FrontEnd</a>
-                                                        <a href="#" class="dropdown-item">Contact Support</a>
+                                                        <a href="#" class="dropdown-item">Home</a>
+                                                        <a href="#" class="dropdown-item">About</a>
+                                                        <a href="#" class="dropdown-item">Contact Us</a>                                                     
                                                     </div>
                                                 </li>                                                                                              
                                             </ul>
@@ -280,10 +223,10 @@
                                                     @Html.ActionLink("Home", "Index", "Home")
                                                 </li>                                               
                                                 <li class="nav-item">
-                                                    @Html.ActionLink("Create", "Create", "Employee")
+                                                    @Html.ActionLink("About", "About", "Home")
                                                 </li>
                                                 <li class="nav-item">
-                                                    @Html.ActionLink("Employees", "Index", "Employee")
+                                                    @Html.ActionLink("Contact Us", "Contact", "Home")
                                                 </li>
                                             </ul>
                                         }
@@ -296,146 +239,16 @@
                                                 if (Session["USERID"] != null && Session["USERNAME"] != null)
                                                 {
                                                     <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                                        <li class="nav-item dropdown">
-                                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
-                                                            <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                                <div class="message-single-top">
-                                                                    <h1>Message</h1>
-                                                                </div>
-                                                                <ul class="message-menu">
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="message-img">
-                                                                                <img src="/hrms_master/img/contact/1.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="message-content">
-                                                                                <span class="message-date">16 Sept</span>
-                                                                                <h2>Advanda Cro</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="message-img">
-                                                                                <img src="/hrms_master/img/contact/4.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="message-content">
-                                                                                <span class="message-date">16 Sept</span>
-                                                                                <h2>Sulaiman din</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="message-img">
-                                                                                <img src="/hrms_master/img/contact/3.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="message-content">
-                                                                                <span class="message-date">16 Sept</span>
-                                                                                <h2>Victor Jara</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="message-img">
-                                                                                <img src="/hrms_master/img/contact/2.jpg" alt="">
-                                                                            </div>
-                                                                            <div class="message-content">
-                                                                                <span class="message-date">16 Sept</span>
-                                                                                <h2>Victor Jara</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                                <div class="message-view">
-                                                                    <a href="#">View All Messages</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                                            <div role="menu" class="notification-author dropdown-menu animated zoomIn">
-                                                                <div class="notification-single-top">
-                                                                    <h1>Notifications</h1>
-                                                                </div>
-                                                                <ul class="notification-menu">
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notification-icon">
-                                                                                <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                                                            </div>
-                                                                            <div class="notification-content">
-                                                                                <span class="notification-date">16 Sept</span>
-                                                                                <h2>Advanda Cro</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notification-icon">
-                                                                                <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
-                                                                            </div>
-                                                                            <div class="notification-content">
-                                                                                <span class="notification-date">16 Sept</span>
-                                                                                <h2>Sulaiman din</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notification-icon">
-                                                                                <i class="fa fa-eraser edu-shield" aria-hidden="true"></i>
-                                                                            </div>
-                                                                            <div class="notification-content">
-                                                                                <span class="notification-date">16 Sept</span>
-                                                                                <h2>Victor Jara</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="notification-icon">
-                                                                                <i class="fa fa-line-chart edu-analytics-arrow" aria-hidden="true"></i>
-                                                                            </div>
-                                                                            <div class="notification-content">
-                                                                                <span class="notification-date">16 Sept</span>
-                                                                                <h2>Victor Jara</h2>
-                                                                                <p>Please done this project as soon possible.</p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                                <div class="notification-view">
-                                                                    <a href="#">View All Notification</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         <li class="nav-item">
                                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                                <img src="/hrms_master/img/product/pro4.jpg" alt="" />
+                                                                @*<img src="@Url.Content(@Session["PHOTO"])" alt="" />*@
                                                                 <span class="admin-name">@Session["USERNAME"].ToString()</span>
                                                                 <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                             </a>
-                                                            <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                            <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">                                                              
                                                                 <li>
-                                                                    <a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+                                                                    <a href="/Employee/Profile?id=@Session["USERID"].ToString()"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                                    @*@Html.ActionLink("My Profile", "Profile", "Employee")*@
                                                                 </li>
                                                                 <li>
                                                                     <a href="/Login/Logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
@@ -520,6 +333,19 @@
         ============================================ -->
     <script src="/hrms_master/js/sparkline/jquery.sparkline.min.js"></script>
     <script src="/hrms_master/js/sparkline/sparkline-active.js"></script>
+    <!-- morrisjs JS
+        ============================================ -->    
+    <script src="/hrms_master/js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- morrisjs JS
+        ============================================ -->
+    <script src="/hrms_master/js/morrisjs/raphael-min.js"></script>
+    <script src="/hrms_master/js/morrisjs/morris.js"></script>
+    <script src="/hrms_master/js/morrisjs/morris-active.js"></script>
+    <!-- morrisjs JS
+        ============================================ -->
+    <script src="/hrms_master/js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/hrms_master/js/sparkline/jquery.charts-sparkline.js"></script>
+    <script src="/hrms_master/js/sparkline/sparkline-active.js"></script>
     <!-- Chart JS
         ============================================ -->
     <script src="/hrms_master/js/chart/jquery.peity.min.js"></script>
@@ -541,7 +367,58 @@
     <!-- tawk chat JS
         ============================================ -->
     <script src="/hrms_master/js/tawk-chat.js"></script>
-
+    <!-- data table JS
+        ============================================ -->
+    <script src="/hrms_master/js/data-table/bootstrap-editable.js"></script>
+    <script src="/hrms_master/js/data-table/bootstrap-table.js"></script>
+    <script src="/hrms_master/js/data-table/tableExport.js"></script>
+    <script src="/hrms_master/js/data-table/data-table-active.js"></script>
+    <script src="/hrms_master/js/data-table/bootstrap-table-editable.js"></script>
+    <script src="/hrms_master/js/data-table/bootstrap-editable.js"></script>
+    <script src="/hrms_master/js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="/hrms_master/js/data-table/colResizable-1.5.source.js"></script>
+    <script src="/hrms_master/js/data-table/bootstrap-table-export.js"></script>
+    <!--  editable JS
+        ============================================ -->
+    <script src="/hrms_master/js/editable/jquery.mockjax.js"></script>
+    <script src="/hrms_master/js/editable/mock-active.js"></script>
+    <script src="/hrms_master/js/editable/select2.js"></script>
+    <script src="/hrms_master/js/editable/moment.min.js"></script>
+    <script src="/hrms_master/js/editable/bootstrap-datetimepicker.js"></script>
+    <script src="/hrms_master/js/editable/bootstrap-editable.js"></script>
+    <script src="/hrms_master/js/editable/xediable-active.js"></script>
+    <!-- datapicker JS
+       ============================================ -->
+    <script src="/hrms_master/js/datapicker/bootstrap-datepicker.js"></script>
+    <script src="/hrms_master/js/datapicker/datepicker-active.js"></script>
+    <!-- chosen JS
+        ============================================ -->
+    <script src="/hrms_master/js/chosen/chosen.jquery.js"></script>
+    <script src="/hrms_master/js/chosen/chosen-active.js"></script>
+    <!-- select2 JS
+        ============================================ -->
+    <script src="/hrms_master/js/select2/select2.full.min.js"></script>
+    <script src="/hrms_master/js/select2/select2-active.js"></script>
+    <!-- ionRangeSlider JS
+        ============================================ -->
+    <script src="/hrms_master/js/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="/hrms_master/js/ionRangeSlider/ion.rangeSlider.active.js"></script>
+    <!-- rangle-slider JS
+        ============================================ -->
+    <script src="/hrms_master/js/rangle-slider/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="/hrms_master/js/rangle-slider/jquery-ui-touch-punch.min.js"></script>
+    <script src="/hrms_master/js/rangle-slider/rangle-active.js"></script>
+    <!-- knob JS
+        ============================================ -->
+    <script src="/hrms_master/js/knob/jquery.knob.js"></script>
+    <script src="/hrms_master/js/knob/knob-active.js"></script>
+    <!-- tab JS
+        ============================================ -->
+    <script src="/hrms_master/js/tab.js"></script>
+    <!-- Google map JS
+       ============================================ -->
+    <script src="js/google.maps/google.maps-active.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiNUO68DkrsFKFz744_LWMqCNI_GqYciQ&callback=initMap"></script>
     @*<div class="container body-content">
 
             <hr />

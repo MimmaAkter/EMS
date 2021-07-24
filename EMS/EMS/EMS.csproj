@@ -186,6 +186,7 @@
     <Content Include="hrms_master\img\contact\2.jpg" />
     <Content Include="hrms_master\img\contact\3.jpg" />
     <Content Include="hrms_master\img\contact\4.jpg" />
+    <Content Include="hrms_master\img\courses\1.jpeg" />
     <Content Include="hrms_master\img\courses\1.jpg" />
     <Content Include="hrms_master\img\courses\2.jpg" />
     <Content Include="hrms_master\img\courses\3.jpg" />
@@ -208,8 +209,14 @@
     <Content Include="hrms_master\img\product\book-2.jpg" />
     <Content Include="hrms_master\img\product\book-3.jpg" />
     <Content Include="hrms_master\img\product\book-4.jpg" />
+    <Content Include="hrms_master\img\product\du_bg.png" />
+    <Content Include="hrms_master\img\product\iitlogo-blue.png" />
+    <Content Include="hrms_master\img\product\iit_bg.png" />
+    <Content Include="hrms_master\img\product\mimma.jpg" />
     <Content Include="hrms_master\img\product\pro4.jpg" />
     <Content Include="hrms_master\img\product\profile-bg.jpg" />
+    <Content Include="hrms_master\img\product\supervisor_mainulHossain.jpeg" />
+    <Content Include="hrms_master\img\product\uic.png" />
     <Content Include="hrms_master\img\profile\1.jpg" />
     <Content Include="hrms_master\img\student\1.jpg" />
     <Content Include="hrms_master\img\student\2.jpg" />
@@ -355,9 +362,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BusinessBase\BankB.cs" />
+    <Compile Include="Models\BusinessBase\BloodB.cs" />
+    <Compile Include="Models\BusinessBase\ReligionB.cs" />
+    <Compile Include="Models\BusinessBase\GenderB.cs" />
     <Compile Include="Models\BusinessBase\DepartmentB.cs" />
     <Compile Include="Models\BusinessBase\DesignationB.cs" />
     <Compile Include="Models\BusinessBase\EmployeeB.cs" />
+    <Compile Include="Models\DBLayer\BloodDB.cs" />
+    <Compile Include="Models\DBLayer\BankDB.cs" />
+    <Compile Include="Models\DBLayer\ReligionDB.cs" />
+    <Compile Include="Models\DBLayer\GenderDB.cs" />
     <Compile Include="Models\DBLayer\DesignationDB.cs" />
     <Compile Include="Models\DBLayer\DepartmentDB.cs" />
     <Compile Include="Models\DBLayer\EmpolyeeDB.cs" />
@@ -399,6 +414,9 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Update.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Employee\Profile.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

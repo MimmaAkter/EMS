@@ -1,0 +1,136 @@
+﻿@model EMS.Models.BusinessBase.EmployeeB
+@{
+    ViewBag.Title = "Profile";
+    String img64 = Convert.ToBase64String(@Model.PHOTO);
+    String img64Url = string.Format("data:image/" + @Model.ImageFile + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+
+}
+
+
+<!-- Single pro tab review Start-->
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-info-inner">
+                    <div class="profile-img">
+                        <img src="@img64Url" alt="Hello" />                        
+                        @*@Html.Image()*@
+                    </div>
+                    <div class="profile-details-hr">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr">
+                                    <p><b>ID</b><br /> @Html.DisplayFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p><b>Name</b><br />@Html.DisplayFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr">
+                                    <p><b>Email ID</b><br />@Html.DisplayFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "EMAIL", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p><b>Phone</b><br />@Html.DisplayFor(model => model.EMPCONTACTNO, new { htmlAttributes = new { @class = "form-control", @name = "EMAIL", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="address-hr">
+                                    <p><b>Present Address</b><br />@Html.DisplayFor(model => model.EMPPRESADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="address-hr">
+                                    <p><b>Service Length</b><br />@Html.DisplayFor(model => model.ServiceLength, new { htmlAttributes = new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Employee ID" } })</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                    <ul id="myTabedu1" class="tab-review-design">
+                        <li class="active"><a href="#description">My Profile</a></li>                      
+                    </ul>
+                    <div id="myTabContent" class="tab-content custom-product-edit">
+                        <div class="product-tab-list tab-pane fade active in" id="description">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.EMPTYPEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.EMPCONTACTNO, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.NID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group alert-up-pd">
+                                                    <div class="dz-message needsclick download-custom">
+                                                        <input type="file" class="form-control" id="image" name="image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group sm-res-mg-15 tbpf-res-mg-15">
+                                                    @Html.EditorFor(model => model.EMPPASSWORD, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.DropDownListFor(model => model.DESIGNATIONID, Model.DesignationList as SelectList, "Designation", new { @class = "form-control" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.DropDownListFor(model => model.DEPARTMENTID, Model.DepartmentList as SelectList, "Designation", new { @class = "form-control" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.DropDownListFor(model => model.SEX, Model.GenderList as SelectList, "Designation", new { @class = "form-control" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.DropDownListFor(model => model.RELIGIONID, Model.ReligionList as SelectList, "Designation", new { @class = "form-control" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                </div>
+                                                @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="payment-adress mg-t-15">
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Save</button>                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

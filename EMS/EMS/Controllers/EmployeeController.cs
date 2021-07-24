@@ -17,6 +17,10 @@ namespace EMS.Controllers
         EmployeeDB _dbLayer = new EmployeeDB();
         DepartmentDB bsDepartment = new DepartmentDB();
         DesignationDB bsDesignation = new DesignationDB();
+        BankDB bsBank = new BankDB();
+        GenderDB bsGender = new GenderDB();
+        BloodDB bsBlood = new BloodDB();
+        ReligionDB bsReligion = new ReligionDB();
         #endregion
 
         #region CRUD
@@ -105,8 +109,17 @@ namespace EMS.Controllers
         
         public ActionResult Update(string id)
         {          
-            var emp = _dbLayer.GetStudent().Find(smodel => smodel.EMPLOYEEID == id);
+            var emp = _dbLayer.GetEmployee(id).Find(smodel => smodel.EMPLOYEEID == id);
             emp.DepartmentList= new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+            emp.DesignationList = new SelectList(bsDesignation.DesignationLookUp(), "DESIGNATIONID", "DESIGNATION");
+            emp.GenderList = new SelectList(bsGender.GenderLookUp(), "SEXID", "SEXNAME");
+            emp.BankList = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
+            emp.BloodList = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
+            emp.ReligionList = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+            //emp.ReligionList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+            //emp.BloodList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+            //emp.BankList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+            //emp.GenderList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
             return View("Update",emp);
         }
         [HttpPost]
@@ -130,6 +143,55 @@ namespace EMS.Controllers
         public ActionResult Delete(string id)
         {
             _dbLayer.Delete(id);
+            return RedirectToAction("Index");
+        }
+        #endregion
+        #region Profile
+        //public new ActionResult Profile(HttpPostedFileBase image,string id)
+        //{            
+        //    var emp = _dbLayer.GetEmployee(id).Find(smodel => smodel.EMPLOYEEID == id);
+        //    emp.DepartmentList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+        //    emp.DesignationList = new SelectList(bsDesignation.DesignationLookUp(), "DESIGNATIONID", "DESIGNATION");
+        //    emp.GenderList = new SelectList(bsGender.GenderLookUp(), "SEXID", "SEXNAME");
+        //    emp.BankList = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
+        //    emp.BloodList = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
+        //    emp.ReligionList = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+        //    if(image != null)
+        //    {
+        //        emp.PHOTO = new byte[image.ContentLength];
+        //    }            
+        //    emp.ImageUrl = Convert.ToBase64String(emp.PHOTO);
+        //    emp.PHOTO = new byte[image.ContentLength];
+        //    return View(emp);
+        //}
+        public new ActionResult Profile(string id)
+        {
+            var emp = _dbLayer.GetEmployee(id).Find(smodel => smodel.EMPLOYEEID == id);
+            emp.DepartmentList = new SelectList(bsDepartment.GetDepartment(), "DEPARTMENTID", "DEPARTMENT");
+            emp.DesignationList = new SelectList(bsDesignation.DesignationLookUp(), "DESIGNATIONID", "DESIGNATION");
+            emp.GenderList = new SelectList(bsGender.GenderLookUp(), "SEXID", "SEXNAME");
+            emp.BankList = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
+            emp.BloodList = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
+            emp.ReligionList = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+            //emp.ImageUrl = "data:Image/png;base64"+ Convert.ToBase64String(emp.PHOTO);
+            return View(emp);
+        }
+        [HttpPost]
+        public new ActionResult Profile(string id, FormCollection fc)
+        {
+            EmployeeB data = new EmployeeB();
+            data.EMPLOYEEID = fc["EMPLOYEEID"];
+            data.EMPLOYEENAME = fc["EMPLOYEENAME"];
+            data.SEX = fc["SEX"];
+            data.BASICSALARY = Convert.ToDecimal(fc["BASICSALARY"]);
+            data.GROSSWAGES = Convert.ToDecimal(fc["GROSSWAGES"]);
+            data.ACCOUNTNO = fc["ACCOUNTNO"];
+            data.NID = fc["NID"];
+            data.DEPARTMENTID = fc["DEPARTMENTID"];
+            //data.DESIGNATIONID = fc["DESIGNATIONID"];
+            //data.DEPARTMENTID = fc["DEPARTMENTID"];
+            //data.EMPPRESADDRESS = fc["EMPPRESADDRESS"];
+            _dbLayer.Update(data);
             return RedirectToAction("Index");
         }
         #endregion
