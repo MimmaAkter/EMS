@@ -18,18 +18,83 @@ namespace EMS.Models.DBLayer
             OracleCommand cmd = new OracleCommand("INSERTEMPLOYEE", constr);
             cmd.CommandType = CommandType.StoredProcedure;
             //com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
-            cmd.Parameters.Add("pEMPLOYEEID", data.EMPLOYEEID);
-            cmd.Parameters.Add("pEMPLOYEENAME", data.EMPLOYEENAME);
-            cmd.Parameters.Add("pSEX", data.SEX);
-            cmd.Parameters.Add("pBASICSALARY", data.BASICSALARY);
-            cmd.Parameters.Add("pGROSSWAGES", data.GROSSWAGES);
-            cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
-            cmd.Parameters.Add("pNID", data.NID);
-            cmd.Parameters.Add("pDESIGNATIONID", data.DESIGNATIONID);
-            cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
-            cmd.Parameters.Add("pEMPPRESADDRESS", data.EMPPRESADDRESS);
+            cmd.Parameters.Add("EMPLOYEEID", data.EMPLOYEEID);
+            cmd.Parameters.Add("EMPLOYEENAME", data.EMPLOYEENAME);
+            cmd.Parameters.Add("SPOUSENAME", data.SPOUSENAME);
+            cmd.Parameters.Add("FATHERSNAME", data.FATHERSNAME);
+            cmd.Parameters.Add("MOTHERSNAME", data.MOTHERSNAME);
+            cmd.Parameters.Add("DESIGNATIONID", data.DESIGNATIONID);
+            cmd.Parameters.Add("DEPARTMENTID", data.DEPARTMENTID);
+            cmd.Parameters.Add("SECTIONID", data.SECTIONID);
+            cmd.Parameters.Add("LINEID", data.LINEID);
+            cmd.Parameters.Add("GRADE", data.GRADE);
             //cmd.Parameters.Add("pPHOTO", data.PHOTO);
-            cmd.Parameters.Add("pPHOTO", OracleDbType.Blob).Value = data.PHOTO;            
+            cmd.Parameters.Add("PHOTO", OracleDbType.Blob).Value = data.PHOTO;
+
+            cmd.Parameters.Add("EMPPASSWORD", data.EMPPASSWORD);
+            cmd.Parameters.Add("EMPCONTACTNO", data.EMPCONTACTNO);
+            cmd.Parameters.Add("EMPPARADDRESS", data.EMPPARADDRESS);
+            cmd.Parameters.Add("EMPPRESADDRESS", data.EMPPRESADDRESS);
+            cmd.Parameters.Add("DISBURSEDATE", data.DISBURSEDATE);
+            cmd.Parameters.Add("DOB", data.DOB);
+            cmd.Parameters.Add("JOININGDATE", data.JOININGDATE);
+            cmd.Parameters.Add("PFEFFECTEDDATE", data.PFEFFECTEDDATE);
+            cmd.Parameters.Add("DATEOFCONFIRMATRION", data.DATEOFCONFIRMATRION);
+            cmd.Parameters.Add("EXPERIENCE", data.EXPERIENCE);
+
+            cmd.Parameters.Add("BASICSALARY", data.BASICSALARY);
+            cmd.Parameters.Add("HOUSERENT", data.HOUSERENT);
+            cmd.Parameters.Add("MEDICAL", data.MEDICAL);
+            cmd.Parameters.Add("PROVIDENTFUND", data.PROVIDENTFUND);
+            cmd.Parameters.Add("GROSSWAGES", data.GROSSWAGES);
+            cmd.Parameters.Add("SEX", data.SEX);
+            cmd.Parameters.Add("SALARYCATEGORY", data.SALARYCATEGORY);
+            cmd.Parameters.Add("EMPSTATUS", data.EMPSTATUS);
+            cmd.Parameters.Add("STATUS", data.STATUS);
+            cmd.Parameters.Add("SHIFTFIXED", data.SHIFTFIXED);
+
+            cmd.Parameters.Add("EMPGROUPID", data.EMPGROUPID);
+            cmd.Parameters.Add("RESIGNDATE", data.RESIGNDATE);
+            cmd.Parameters.Add("CONVEYANCE", data.CONVEYANCE);
+            cmd.Parameters.Add("INCOMETAX", data.INCOMETAX);
+            cmd.Parameters.Add("ADVANCE", data.ADVANCE);
+            cmd.Parameters.Add("ADDITIONAL", data.ADDITIONAL);
+            cmd.Parameters.Add("CARALLOWANCE", data.CARALLOWANCE);
+            cmd.Parameters.Add("TOTALADDITION", data.TOTALADDITION);
+            cmd.Parameters.Add("PAYMENTTYPEID", data.PAYMENTTYPEID);
+            cmd.Parameters.Add("ACCOUNTNO", data.ACCOUNTNO);
+
+            cmd.Parameters.Add("BANKID", data.BANKID);
+            cmd.Parameters.Add("BRANCHNAME", data.BRANCHNAME);
+            cmd.Parameters.Add("PFCHEQUENO", data.PFCHEQUENO);
+            cmd.Parameters.Add("PFCHEQUEDATE", data.PFCHEQUEDATE);
+            cmd.Parameters.Add("SITE", data.SITE);
+            cmd.Parameters.Add("EMPNO", data.EMPNO);
+            cmd.Parameters.Add("PUNCHNO", data.PUNCHNO);
+            cmd.Parameters.Add("CARDREGDATE", data.CARDREGDATE);
+            cmd.Parameters.Add("ALLOWBMSALARY", data.ALLOWBMSALARY);
+            cmd.Parameters.Add("EDUCATIONALQUALIFICATION", data.EDUCATIONALQUALIFICATION);
+
+            cmd.Parameters.Add("MARITALSTATUS", data.MARITALSTATUS);
+            cmd.Parameters.Add("SHIFTID", data.SHIFTID);
+            cmd.Parameters.Add("EMPTYPEID", data.EMPTYPEID);
+            cmd.Parameters.Add("TINNO", data.TINNO);
+            cmd.Parameters.Add("NID", data.NID);
+            cmd.Parameters.Add("RELIGIONID", data.RELIGIONID);
+            cmd.Parameters.Add("PFPARCENT", data.PFPARCENT);
+            cmd.Parameters.Add("EMAIL", data.EMAIL);
+            cmd.Parameters.Add("DEVISIONID", data.DEVISIONID);
+            cmd.Parameters.Add("HELDUPDATE", data.HELDUPDATE);
+
+            cmd.Parameters.Add("NOOFCHIELD", data.NOOFCHIELD);
+            cmd.Parameters.Add("BLOODGROUPID", data.BLOODGROUPID);
+            cmd.Parameters.Add("RESIGNDATE", data.RESIGNDATE);
+            cmd.Parameters.Add("FNFDUESALARY", data.FNFDUESALARY);
+            cmd.Parameters.Add("FNFCOMPLETE", data.FNFCOMPLETE);
+            cmd.Parameters.Add("CELLPHONEALLOWANCE", data.CELLPHONEALLOWANCE);
+            cmd.Parameters.Add("CPALLOWED", data.CPALLOWED);
+            cmd.Parameters.Add("CELLPHONETYPEID", data.CELLPHONETYPEID);
+            
             constr.Open();
             cmd.ExecuteNonQuery();
             constr.Close();
@@ -79,20 +144,30 @@ namespace EMS.Models.DBLayer
 
             foreach (DataRow dr in dt.Rows)
             {
+                byte[] _photo = null;
+                if (!Convert.IsDBNull(dr["PHOTO"]))
+                {
+                    _photo = (byte[])dr["PHOTO"];
+                }
                 employeelist.Add(
                     new EmployeeB
                     {
-                        EMPLOYEEID = Convert.ToString(dr["EMPLOYEEID"]),
-                        EMPLOYEENAME = Convert.ToString(dr["EMPLOYEENAME"]),
-                        DEPARTMENTID = Convert.ToString(dr["DEPARTMENTID"]),
+                        //EMPLOYEEID = dr["EMPLOYEEID"] == DBNull.Value ? string.Empty : Convert.ToString(dr["EMPLOYEEID"]),
+                        ////(_dob.Text == string.Empty ? "NULL" : "'" + _dob.Date.ToString("dd-MMM-yyyy") + "'") +
+                        //EMPLOYEENAME = dr["EMPLOYEENAME"] == DBNull.Value ? string.Empty : Convert.ToString(dr["EMPLOYEENAME"]),
+                        //DEPARTMENTID = dr["DEPARTMENTID"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DEPARTMENTID"]),
                         DESIGNATIONID = Convert.ToString(dr["DESIGNATIONID"]),
                         EMPCONTACTNO = Convert.ToString(dr["EMPCONTACTNO"]),
+                        EMPLOYEEID = Convert.ToString(dr["EMPLOYEEID"]),
+                        //(_dob.Text == string.Empty ? "NULL" : "'" + _dob.Date.ToString("dd-MMM-yyyy") + "'") +
+                        EMPLOYEENAME = Convert.ToString(dr["EMPLOYEENAME"]),
+                        DEPARTMENTID = Convert.ToString(dr["DEPARTMENTID"]),
                         EMPPARADDRESS = Convert.ToString(dr["EMPPARADDRESS"]),
                         EMPPRESADDRESS = Convert.ToString(dr["EMPPRESADDRESS"]),
                         EXPERIENCE = Convert.ToString(dr["EXPERIENCE"]),
                         ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"]),
                         BANKID = Convert.ToString(dr["BANKID"]),
-                        BASICSALARY = Convert.ToDecimal(dr["BASICSALARY"]),
+                        BASICSALARY = dr["BASICSALARY"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["BASICSALARY"]),
                         BLOODGROUPID = Convert.ToInt16(dr["BLOODGROUPID"]),
                         DOB = Convert.ToDateTime(dr["DOB"]),
                         FATHERSNAME = Convert.ToString(dr["FATHERSNAME"]),
@@ -101,15 +176,18 @@ namespace EMS.Models.DBLayer
                         HOUSERENT = Convert.ToDecimal(dr["HOUSERENT"]),
                         GROSSWAGES = Convert.ToDecimal(dr["GROSSWAGES"]),
                         NID = Convert.ToString(dr["NID"]),
-                        SEX = Convert.ToString(dr["SEX"]),
+                        SEX = dr["SEX"] == DBNull.Value ? string.Empty : Convert.ToString(dr["SEX"]),
                         RELIGIONID = Convert.ToInt16(dr["RELIGIONID"]),
                         MEDICAL = Convert.ToDecimal(dr["MEDICAL"]),
                         ServiceLength = Convert.ToString(dr["ServiceLength"]),
                         JOININGDATE = Convert.ToDateTime(dr["JOININGDATE"]),
-                        //RGNSUBDATE = Convert.ToDateTime(dr["RGNSUBDATE"]),
+                        //RGNSUBDATE = Convert.ToDateTime(dr["RGNSUBDATE"]) == string.Empty ? null : Convert.ToDateTime(dr["RGNSUBDATE"]),
                         EMPPASSWORD = Convert.ToString(dr["EMPPASSWORD"]),
                         EMPSTATUS = Convert.ToString(dr["EMPSTATUS"]),
-                        PHOTO= (byte[])dr["PHOTO"]
+                        //ImageUrl = "data:Image/png;base64" + Convert.ToBase64String(PHOTO)
+                        //PHOTO = dr["PHOTO"] is DBNull ? null : Convert.tois(dr["PHOTO"])
+                        PHOTO=_photo
+                       //Convert.IsDBNull((byte[])dr["PHOTO"])=
                         //RESIGNDATE = Convert.ToDateTime(dr["RESIGNDATE"])
 
                     });
@@ -157,6 +235,7 @@ namespace EMS.Models.DBLayer
             cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
             cmd.Parameters.Add("pNID", data.NID);
             cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
+            cmd.Parameters.Add("pPHOTO", OracleDbType.Blob).Value = data.PHOTO;
             //cmd.Parameters.Add("pDESIGNATIONID", data.DESIGNATIONID);
             //cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
             //cmd.Parameters.Add("pEMPPRESADDRESS", data.EMPPRESADDRESS);

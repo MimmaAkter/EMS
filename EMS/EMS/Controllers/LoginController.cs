@@ -22,7 +22,7 @@ namespace EMS.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection fc)
         {           
-            user.EMPLOYEEID = fc["EMPLOYEEID"];
+            user.EMPLOYEEID = fc["EMPLOYEEID"].ToUpper();
             user.EMPPASSWORD = fc["EMPPASSWORD"];
             List<EmployeeB> validUser = _dbLayer.Valid(user);
             if (validUser.Count == 0)

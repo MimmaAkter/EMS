@@ -362,6 +362,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\CustomHtmlHelper.cs" />
     <Compile Include="Models\BusinessBase\BankB.cs" />
     <Compile Include="Models\BusinessBase\BloodB.cs" />
     <Compile Include="Models\BusinessBase\ReligionB.cs" />
