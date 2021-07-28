@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,16 +9,22 @@ namespace EMS.Models.BusinessBase
 {
     public class EmployeeB
     {
+        [Required]
         public string EMPLOYEEID { get; set; }
+        [Required]
         public string EMPLOYEENAME { get; set; }
+        [Required]
         public string DESIGNATIONID { get; set; }
+        [Required]
         public string DEPARTMENTID { get; set; }
         public string SECTIONID { get; set; }
         public string LINEID { get; set; }
         public byte GRADE { get; set; }
+        [Required]
         public string EMPPASSWORD { get; set; }
         public string EMPCONTACTNO { get; set; }
         public string EMPPARADDRESS { get; set; }
+        [Required]
         public string EMPPRESADDRESS { get; set; }
         public string SEX { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }

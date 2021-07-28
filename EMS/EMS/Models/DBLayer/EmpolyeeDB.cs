@@ -167,7 +167,7 @@ namespace EMS.Models.DBLayer
                         EXPERIENCE = Convert.ToString(dr["EXPERIENCE"]),
                         ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"]),
                         BANKID = Convert.ToString(dr["BANKID"]),
-                        BASICSALARY = dr["BASICSALARY"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["BASICSALARY"]),
+                        BASICSALARY = Convert.ToDecimal(dr["BASICSALARY"]),
                         BLOODGROUPID = Convert.ToInt16(dr["BLOODGROUPID"]),
                         DOB = Convert.ToDateTime(dr["DOB"]),
                         FATHERSNAME = Convert.ToString(dr["FATHERSNAME"]),
@@ -227,18 +227,92 @@ namespace EMS.Models.DBLayer
             cmd.CommandType = CommandType.StoredProcedure;
             //com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
             cmd.Parameters.Add("pEMPLOYEEID", OracleDbType.Varchar2).Value = data.EMPLOYEEID;
-            //cmd.Parameters.Add("pEMPLOYEEID", data.EMPLOYEEID);
-            cmd.Parameters.Add("pEMPLOYEENAME", data.EMPLOYEENAME);
-            cmd.Parameters.Add("pSEX", data.SEX);
-            cmd.Parameters.Add("pBASICSALARY", data.BASICSALARY);
-            cmd.Parameters.Add("pGROSSWAGES", data.GROSSWAGES);
-            cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
-            cmd.Parameters.Add("pNID", data.NID);
+            //cmd.Parameters.Add("EMPLOYEEID", data.EMPLOYEEID);
+            cmd.Parameters.Add("pEMPLOYEENAME", data.EMPLOYEENAME);           
+            //=============================================================
+            //cmd.Parameters.Add("pSEX", data.SEX);
+            //cmd.Parameters.Add("pGROSSWAGES", data.GROSSWAGES);
+            //cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
+            //cmd.Parameters.Add("pNID", data.NID);
+            //cmd.Parameters.Add("pBASICSALARY", data.BASICSALARY);
+            //============================================================
+            cmd.Parameters.Add("pSPOUSENAME", data.SPOUSENAME);
+            cmd.Parameters.Add("pFATHERSNAME", data.FATHERSNAME);
+            cmd.Parameters.Add("pMOTHERSNAME", data.MOTHERSNAME);
+            cmd.Parameters.Add("pDESIGNATIONID", data.DESIGNATIONID);
             cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
+            //cmd.Parameters.Add("SECTIONID", data.SECTIONID);
+            //cmd.Parameters.Add("LINEID", data.LINEID);
+            //cmd.Parameters.Add("GRADE", data.GRADE);
+            //cmd.Parameters.Add("pPHOTO", data.PHOTO);
             cmd.Parameters.Add("pPHOTO", OracleDbType.Blob).Value = data.PHOTO;
-            //cmd.Parameters.Add("pDESIGNATIONID", data.DESIGNATIONID);
-            //cmd.Parameters.Add("pDEPARTMENTID", data.DEPARTMENTID);
-            //cmd.Parameters.Add("pEMPPRESADDRESS", data.EMPPRESADDRESS);
+
+            cmd.Parameters.Add("pEMPPASSWORD", data.EMPPASSWORD);
+            cmd.Parameters.Add("pEMPCONTACTNO", data.EMPCONTACTNO);
+            cmd.Parameters.Add("pEMPPARADDRESS", data.EMPPARADDRESS);
+            cmd.Parameters.Add("pEMPPRESADDRESS", data.EMPPRESADDRESS);
+            //cmd.Parameters.Add("DISBURSEDATE", data.DISBURSEDATE);
+            cmd.Parameters.Add("pDOB", data.DOB);
+            cmd.Parameters.Add("pJOININGDATE", data.JOININGDATE);
+            cmd.Parameters.Add("pPFEFFECTEDDATE", data.PFEFFECTEDDATE);
+            //cmd.Parameters.Add("DATEOFCONFIRMATRION", data.DATEOFCONFIRMATRION);
+            cmd.Parameters.Add("pEXPERIENCE", data.EXPERIENCE);
+
+            cmd.Parameters.Add("pBASICSALARY", data.BASICSALARY);
+            cmd.Parameters.Add("pHOUSERENT", data.HOUSERENT);
+            cmd.Parameters.Add("pMEDICAL", data.MEDICAL);
+            cmd.Parameters.Add("pPROVIDENTFUND", data.PROVIDENTFUND);
+            cmd.Parameters.Add("pGROSSWAGES", data.GROSSWAGES);
+            cmd.Parameters.Add("pSEX", data.SEX);
+            //cmd.Parameters.Add("SALARYCATEGORY", data.SALARYCATEGORY);
+            cmd.Parameters.Add("pEMPSTATUS", data.EMPSTATUS);
+            //cmd.Parameters.Add("STATUS", data.STATUS);
+            //cmd.Parameters.Add("SHIFTFIXED", data.SHIFTFIXED);
+
+            //cmd.Parameters.Add("EMPGROUPID", data.EMPGROUPID);
+            cmd.Parameters.Add("pRESIGNDATE", data.RESIGNDATE);
+            cmd.Parameters.Add("pCONVEYANCE", data.CONVEYANCE);
+            //cmd.Parameters.Add("INCOMETAX", data.INCOMETAX);
+            //cmd.Parameters.Add("ADVANCE", data.ADVANCE);
+            //cmd.Parameters.Add("ADDITIONAL", data.ADDITIONAL);
+            //cmd.Parameters.Add("CARALLOWANCE", data.CARALLOWANCE);
+            //cmd.Parameters.Add("TOTALADDITION", data.TOTALADDITION);
+            cmd.Parameters.Add("pPAYMENTTYPEID", data.PAYMENTTYPEID);
+            cmd.Parameters.Add("pACCOUNTNO", data.ACCOUNTNO);
+
+            cmd.Parameters.Add("pBANKID", data.BANKID);
+            cmd.Parameters.Add("pBRANCHNAME", data.BRANCHNAME);
+            //cmd.Parameters.Add("PFCHEQUENO", data.PFCHEQUENO);
+            //cmd.Parameters.Add("PFCHEQUEDATE", data.PFCHEQUEDATE);
+            //cmd.Parameters.Add("SITE", data.SITE);
+            //cmd.Parameters.Add("EMPNO", data.EMPNO);
+            //cmd.Parameters.Add("PUNCHNO", data.PUNCHNO);
+            //cmd.Parameters.Add("CARDREGDATE", data.CARDREGDATE);
+            //cmd.Parameters.Add("ALLOWBMSALARY", data.ALLOWBMSALARY);
+            cmd.Parameters.Add("pEDUCATIONALQUALIFICATION", data.EDUCATIONALQUALIFICATION);
+
+            //cmd.Parameters.Add("MARITALSTATUS", data.MARITALSTATUS);
+            //cmd.Parameters.Add("SHIFTID", data.SHIFTID);
+            //cmd.Parameters.Add("EMPTYPEID", data.EMPTYPEID);
+            //cmd.Parameters.Add("TINNO", data.TINNO);
+            cmd.Parameters.Add("pNID", data.NID);
+            cmd.Parameters.Add("pRELIGIONID", data.RELIGIONID);
+            //cmd.Parameters.Add("PFPARCENT", data.PFPARCENT);
+            cmd.Parameters.Add("pEMAIL", data.EMAIL);
+            //cmd.Parameters.Add("DEVISIONID", data.DEVISIONID);
+            //cmd.Parameters.Add("HELDUPDATE", data.HELDUPDATE);
+
+            //cmd.Parameters.Add("NOOFCHIELD", data.NOOFCHIELD);
+            cmd.Parameters.Add("pBLOODGROUPID", data.BLOODGROUPID);
+            //cmd.Parameters.Add("RGNSUBDATE", data.RGNSUBDATE);
+            //cmd.Parameters.Add("FNFDUESALARY", data.FNFDUESALARY);
+            //cmd.Parameters.Add("FNFCOMPLETE", data.FNFCOMPLETE);
+            //cmd.Parameters.Add("CELLPHONEALLOWANCE", data.CELLPHONEALLOWANCE);
+            //cmd.Parameters.Add("CPALLOWED", data.CPALLOWED);
+            //cmd.Parameters.Add("CELLPHONETYPEID", data.CELLPHONETYPEID);
+
+            //cmd.Parameters.Add("EMPLOYEEID", OracleDbType.Varchar2).Value = data.EMPLOYEEID;
+
             constr.Open();
             cmd.ExecuteNonQuery();
             constr.Close();
@@ -282,6 +356,61 @@ namespace EMS.Models.DBLayer
                 }
                 return List;
             };
+        }
+        #endregion
+
+        #region ReadReport
+
+        [Serializable()]
+        private class Criteria
+        {
+            private short _querytype = -1;
+            private short _empGroup = -1;
+            public short QueryType
+            {
+                get { return _querytype; }
+            }
+            public short EmpGroup
+            {
+                get { return _empGroup; }
+            }
+
+
+            public Criteria(short querytype, short empGroup)
+            { _querytype = querytype; _empGroup = empGroup; }
+        }
+        public DataTable ReadForPrint()
+        {
+            OracleCommand com = new OracleCommand("RptEmployeeList", constr);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+            //com.Parameters.Add("pEmployeeID", OracleDbType.Varchar2).Value = id;
+            //com.Parameters.Add("pStatus", 10);
+            //com.Parameters.Add("pEmpGroup", OracleDbType.Int16, _Cri.EmpGroup, ParameterDirection.Input);
+            //com.Parameters.Add("pReturnData", 1);
+            OracleDataAdapter da = new OracleDataAdapter(com);
+            //DataTable dt = new DataTable();
+            DataTable ds = new DataTable();
+            da.Fill(ds);
+            return ds;
+        }
+
+        public DataTable ReadForPrintCV(string id)
+        {
+            OracleCommand com = new OracleCommand("GetEmployeeCV", constr);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.Add("data_cursor", OracleDbType.RefCursor, DBNull.Value, ParameterDirection.Output);
+            com.Parameters.Add("pStatus", OracleDbType.Int16, 0, ParameterDirection.Input);
+            com.Parameters.Add("pEmployeeID", OracleDbType.Varchar2, id, ParameterDirection.Input);
+            //com.Parameters.Add("pEmployeeID", OracleDbType.Varchar2).Value = id;
+            //com.Parameters.Add("pStatus", 10);
+            //com.Parameters.Add("pEmpGroup", OracleDbType.Int16, _Cri.EmpGroup, ParameterDirection.Input);
+            //com.Parameters.Add("pReturnData", 1);
+            OracleDataAdapter da = new OracleDataAdapter(com);
+            //DataTable dt = new DataTable();
+            DataTable ds = new DataTable();
+            da.Fill(ds);
+            return ds;
         }
         #endregion
 

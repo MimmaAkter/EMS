@@ -75,6 +75,7 @@
                 <div class="hpanel">
                     <div class="panel-body">
                         <form action="#" id="loginForm">
+                            @Html.Raw(TempData["msg"])
                             <div class="form-group">
                                 <label class="control-label" for="username">Employee ID</label>
                                 @*<input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">*@
@@ -95,8 +96,32 @@
                                 </label>
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
-                            <button class="btn btn-success btn-block loginbtn" onclick="Login()">Login</button>                            
-                            <button class="btn btn-default btn-block" href="/Views/Shared/_Layout.cshtml">Cancel</button>                           
+                            <button class="btn btn-success btn-block loginbtn" data-toggle="modal" data-target="#PrimaryModalalert" onclick="Login()">Login</button>                            
+                            <button class="btn btn-default btn-block" href="/Views/Shared/_Layout.cshtml">Cancel</button>
+                            @*<div class="modal-bootstrap shadow-inner mg-tb-30 responsive-mg-b-0">                               
+                                <div class="modal-area-button">
+                                    <a class="Primary mg-b-10" href="#" data-toggle="modal" data-target="#PrimaryModalalert">Primary</a>
+                                   
+                                </div>
+                            </div>*@
+                            @*<div id="PrimaryModalalert" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-close-area modal-close-df">
+                                            <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                                        </div>
+                                        <div class="modal-body">
+                                            <i class="educate-icon educate-checked modal-check-pro"></i>
+                                            <h2>Awesome!</h2>
+                                            <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a data-dismiss="modal" href="#">Cancel</a>
+                                            <a href="#">Process</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@                           
                         </form>
                     </div>
                 </div>

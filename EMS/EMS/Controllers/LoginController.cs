@@ -27,6 +27,7 @@ namespace EMS.Controllers
             List<EmployeeB> validUser = _dbLayer.Valid(user);
             if (validUser.Count == 0)
             {
+                TempData["msg"] = "<script>alert('Invalid Employee id and Password');</script>";
                 return RedirectToAction("Login", "Login");
             }
             else
