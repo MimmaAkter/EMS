@@ -368,6 +368,7 @@
     <Compile Include="HtmlHelpers\CustomHtmlHelper.cs" />
     <Compile Include="Models\BusinessBase\BankB.cs" />
     <Compile Include="Models\BusinessBase\BloodB.cs" />
+    <Compile Include="Models\BusinessBase\PaymentTypeB.cs" />
     <Compile Include="Models\BusinessBase\ReligionB.cs" />
     <Compile Include="Models\BusinessBase\GenderB.cs" />
     <Compile Include="Models\BusinessBase\DepartmentB.cs" />
@@ -375,6 +376,7 @@
     <Compile Include="Models\BusinessBase\EmployeeB.cs" />
     <Compile Include="Models\DBLayer\BloodDB.cs" />
     <Compile Include="Models\DBLayer\BankDB.cs" />
+    <Compile Include="Models\DBLayer\PaymentTypeDB.cs" />
     <Compile Include="Models\DBLayer\ReligionDB.cs" />
     <Compile Include="Models\DBLayer\GenderDB.cs" />
     <Compile Include="Models\DBLayer\DesignationDB.cs" />

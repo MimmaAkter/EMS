@@ -15,7 +15,7 @@
                             <li class="active"><a href="#description">Basic Information</a></li>
                             <li><a href="#Personal">Personal Information</a></li>
                             <li><a href="#Salary">Salary Details</a></li>
-                            <li><a href="#PF">PF Details</a></li>
+                            @*<li><a href="#PF">PF Details</a></li>*@
                         </ul>
                         <div id="myTabContent" class="tab-content custom-product-edit">
                             <div class="product-tab-list tab-pane fade active in" id="description">
@@ -27,26 +27,26 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })
+                                                                @Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID*" } })
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                                @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name*" } })
                                                             </div>
                                                             <div class="form-group data-custon-pick" id="data_1">
                                                                 <div class="input-group date">
                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    @Html.EditorFor(model => model.JOININGDATE, new { htmlAttributes = new { @class = "form-control", @name = "JOININGDATE", @type = "text", @placeholder = "Joining Date" } })
+                                                                    @Html.EditorFor(model => model.JOININGDATE, new { htmlAttributes = new { @class = "form-control", @name = "JOININGDATE", @type = "text", @placeholder = "Joining Date*" } })
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.DropDownList("DEPARTMENTID", ViewBag.DEPARTMENTID as SelectList, "Department", new { @class = "form-control", @name = "DEPARTMENTID" })
+                                                                @Html.DropDownList("DEPARTMENTID", ViewBag.DEPARTMENTID as SelectList, "Department*", new { @class = "form-control", @name = "DEPARTMENTID" })
                                                             </div>
                                                             <div class="form-group">
                                                                 @Html.EditorFor(model => model.EMPSTATUS, new { htmlAttributes = new { @class = "form-control", @name = "EMPSTATUS", @type = "text", @placeholder = "Employee Status" } })
                                                             </div>
-                                                            <div class="form-group">
+                                                            @*<div class="form-group">
                                                                 @Html.EditorFor(model => model.ServiceLength, new { htmlAttributes = new { @class = "form-control", @name = "ServiceLength", @type = "text", @placeholder = "Date of Birth" } })
-                                                            </div>
+                                                            </div>*@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
@@ -57,7 +57,7 @@
                                                                     <input type="file" class="form-control" id="image" name="image" />
                                                                 </div>
                                                             </div>
-                                                            <div class="sparkline16-graph">
+                                                            @*<div class="sparkline16-graph">
                                                                 <div class="date-picker-inner">
                                                                     <div class="form-group data-custon-pick" id="data_1">
                                                                         <div class="input-group date">
@@ -66,13 +66,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>*@
                                                             <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownList("DESIGNATIONID", ViewBag.DESIGNATIONID as SelectList, "Designation", new { @class = "form-control", @name = "DESIGNATIONID" })
+                                                                @Html.DropDownList("DESIGNATIONID", ViewBag.DESIGNATIONID as SelectList, "Designation*", new { @class = "form-control", @name = "DESIGNATIONID" })
                                                                 @*@Html.DropDownListFor(model => model.DESIGNATIONID, Model.DesignationList as SelectList, "Designation", new { @class = "form-control" })*@
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EXPERIENCE, new { htmlAttributes = new { @class = "form-control", @name = "EXPERIENCE", @type = "text", @placeholder = "Experience" } })
+                                                                @Html.TextAreaFor(model => model.EXPERIENCE, new { @class = "form-control", @name = "EXPERIENCE", @type = "text", @placeholder = "Experience" })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -80,7 +80,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="payment-adress">
                                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
+                                                                @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
                                                             </div>
                                                         </div>
                                                     </div>
@@ -114,7 +114,7 @@
                                                                 @Html.EditorFor(model => model.EMPCONTACTNO, new { htmlAttributes = new { @class = "form-control", @name = "EMPCONTACTNO", @type = "text", @placeholder = "Contact No" } })
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EMPPRESADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Experience" } })
+                                                                @Html.TextAreaFor(model => model.EMPPRESADDRESS,new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Present Address*" })
                                                             </div>
                                                             <div class="form-group">
                                                                 @Html.DropDownList("SEXID", ViewBag.SEXID as SelectList, "Gender", new { @class = "form-control", @name = "SEXID" })
@@ -135,7 +135,7 @@
                                                                 @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "EMAIL", @type = "mail", @placeholder = "Email" } })
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EMPPARADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPARADDRESS", @type = "text", @placeholder = "Experience" } })
+                                                                @Html.TextAreaFor(model => model.EMPPARADDRESS, new { @class = "form-control", @name = "EMPPARADDRESS", @type = "text", @placeholder = "Parmanent Address" })
                                                             </div>
                                                             <div class="form-group res-mg-t-15">
                                                                 @Html.DropDownList("RELIGIONID", ViewBag.RELIGIONID as SelectList, "Religion", new { @class = "form-control", @name = "RELIGIONID" })
@@ -151,7 +151,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="payment-adress">
                                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
+                                                                @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
                                                             </div>
                                                         </div>
                                                     </div>
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-tab-list tab-pane fade active in" id="Account">
+                            <div class="product-tab-list tab-pane fade active in" id="Salary">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="review-content-section">
@@ -170,10 +170,10 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
-                                                                @Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wages" } })
+                                                                @Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wages*" } })
                                                             </div>
                                                             <div class="form-group">
-                                                                @Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "text", @placeholder = "Basic Salary" } })
+                                                                @Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "text", @placeholder = "Basic Salary*" } })
                                                             </div>
                                                             <div class="form-group">
                                                                 @Html.EditorFor(model => model.HOUSERENT, new { htmlAttributes = new { @class = "form-control", @name = "HOUSERENT", @type = "text", @placeholder = "House Rent" } })
@@ -209,7 +209,7 @@
                                                             <div class="form-group data-custon-pick" id="data_1">
                                                                 <div class="input-group date">
                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    @Html.EditorFor(model => model.PFEFFECTEDDATE, new { htmlAttributes = new { @class = "form-control", @name = "PFEFFECTEDDATE", @type = "text", @placeholder = "Date of Birth" } })
+                                                                    @Html.EditorFor(model => model.PFEFFECTEDDATE, new { htmlAttributes = new { @class = "form-control", @name = "PFEFFECTEDDATE", @type = "text", @placeholder = "PF Effected Date" } })
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -218,7 +218,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="payment-adress">
                                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
+                                                                @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
                                                             </div>
                                                         </div>
                                                     </div>

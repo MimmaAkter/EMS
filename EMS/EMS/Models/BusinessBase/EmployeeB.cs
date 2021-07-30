@@ -73,7 +73,7 @@ namespace EMS.Models.BusinessBase
         public string MOTHERSNAME { get; set; }
         public string EDUCATIONALQUALIFICATION { get; set; }
         public Nullable<short> FOOD { get; set; }
-        public Nullable<byte> MARITALSTATUS { get; set; }
+        public bool MARITALSTATUS { get; set; }
         public byte[] PHOTO { get; set; }
         public Nullable<decimal> GRADEID { get; set; }
         public Nullable<decimal> OLDGROSSWAGES { get; set; }
@@ -109,6 +109,7 @@ namespace EMS.Models.BusinessBase
         public SelectList ReligionList { get; set; }
         public SelectList BankList { get; set; }
         public SelectList GenderList { get; set; }
+        public SelectList PaymenttypeList { get; set; }
         public string ImageUrl { get; set; }
         public string ServiceLength { get; set; }
 

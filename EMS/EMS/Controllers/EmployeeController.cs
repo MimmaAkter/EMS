@@ -23,6 +23,7 @@ namespace EMS.Controllers
         GenderDB bsGender = new GenderDB();
         BloodDB bsBlood = new BloodDB();
         ReligionDB bsReligion = new ReligionDB();
+        PaymentTypeDB bsPaymentType = new PaymentTypeDB();
         #endregion
         #region CRUD
         public ActionResult Index()
@@ -46,6 +47,7 @@ namespace EMS.Controllers
             ViewBag.BANKID = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
             ViewBag.BLOODGROUPID = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
             ViewBag.RELIGIONID = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+            ViewBag.PaymenttypeList = new SelectList(bsPaymentType.PaymentTypeLookUp(), "PAYMENTTYPEID", "PAYMENTTYPE");
 
             return View();
         }
@@ -58,6 +60,7 @@ namespace EMS.Controllers
             ViewBag.BANKID = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
             ViewBag.BLOODGROUPID = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
             ViewBag.RELIGIONID = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+            ViewBag.PaymenttypeList = new SelectList(bsPaymentType.PaymentTypeLookUp(), "PAYMENTTYPEID", "PAYMENTTYPE");
 
             EmployeeB data = new EmployeeB();
             data.EMPLOYEEID = fc["EMPLOYEEID"].ToString().ToUpper();
@@ -135,13 +138,15 @@ namespace EMS.Controllers
             emp.BankList = new SelectList(bsBank.BankLookUp(), "BankId", "BankName");
             emp.BloodList = new SelectList(bsBlood.BloodLookUp(), "BLOODGROUPID", "BLOODGROUPNAME");
             emp.ReligionList = new SelectList(bsReligion.ReligionLookUp(), "RELIGIONID", "RELIGIONNAME");
+            emp.PaymenttypeList = new SelectList(bsPaymentType.PaymentTypeLookUp(), "PAYMENTTYPEID", "PAYMENTTYPE");
+            //emp.MARITALSTATUS = (emp.MARITALSTATUS == null) ? false : emp.MARITALSTATUS;
             return View("Update",emp);
         }
         [HttpPost]
-        public ActionResult Update(string id, FormCollection fc, HttpPostedFileBase image)
+        public ActionResult Update(EmployeeB data, FormCollection fc, HttpPostedFileBase image,string maritalStatus)
         {
             //var emp = _dbLayer.GetEmployee(id).Find(smodel => smodel.EMPLOYEEID == id);         
-            EmployeeB data = new EmployeeB();
+            //EmployeeB data = new EmployeeB();
 
             //data.DepartmentList = new SelectList(bsDepartment.DepartmentLookUp(), "DEPARTMENTID", "DEPARTMENT");
             //data.DesignationList = new SelectList(bsDesignation.DesignationLookUp(), "DESIGNATIONID", "DESIGNATION");
@@ -169,13 +174,13 @@ namespace EMS.Controllers
             data.DOB = Convert.ToDateTime(fc["DOB"]);
 
             data.JOININGDATE =Convert.ToDateTime(fc["JOININGDATE"]);
-            //data.PFEFFECTEDDATE =Convert.ToDateTime(fc["PFEFFECTEDDATE"]);
+            //data.PFEFFECTEDDATE = Convert.ToDateTime(fc["PFEFFECTEDDATE"]) == string.Empty ? string.Empty: Convert.ToDateTime(fc["PFEFFECTEDDATE"]);
             data.DATEOFCONFIRMATRION =Convert.ToDateTime(fc["DATEOFCONFIRMATRION"]);
             data.EXPERIENCE = fc["EXPERIENCE"];
             data.BASICSALARY = Convert.ToDecimal(fc["BASICSALARY"]);
             data.HOUSERENT =Convert.ToDecimal(fc["HOUSERENT"]);
             data.MEDICAL =Convert.ToDecimal(fc["MEDICAL"]);
-            //data.PROVIDENTFUND =Convert.ToDecimal(fc["PROVIDENTFUND"]);
+            //data.PROVIDENTFUND = Convert.IsDBNull(fc["PROVIDENTFUND"])?0: Convert.ToDecimal(fc["PROVIDENTFUND"]);
 
             data.GROSSWAGES =Convert.ToDecimal(fc["GROSSWAGES"]);           
             data.SEX = fc["SEX"];
@@ -186,13 +191,13 @@ namespace EMS.Controllers
             //data.EMPGROUPID =Convert.ToInt16 (fc["EMPGROUPID"]);
             //data.RESIGNDATE = fc["RESIGNDATE"] == string.Empty ? null : Convert.ToDateTime(fc["RGNSUBDATE"]);
 
-            //data.CONVEYANCE =Convert.ToDecimal(fc["CONVEYANCE"]);
+            data.CONVEYANCE =Convert.ToDecimal(fc["CONVEYANCE"]);
             //data.INCOMETAX =Convert.ToDecimal(fc["INCOMETAX"]);
             //data.ADVANCE =Convert.ToDecimal(fc["ADVANCE"]);
             //data.ADDITIONAL = Convert.ToDecimal(fc["ADDITIONAL"]);
             //data.CARALLOWANCE = Convert.ToDecimal(fc["CARALLOWANCE"]);
             //data.TOTALADDITION =Convert.ToDecimal(fc["TOTALADDITION"]);
-            //data.PAYMENTTYPEID =Convert.ToBoolean(fc["PAYMENTTYPEID"]);
+            data.PAYMENTTYPEID =Convert.ToBoolean(fc["PAYMENTTYPEID"]);
             //data.ACCOUNTNO = fc["ACCOUNTNO"];
 
             data.BANKID = fc["BANKID"];
@@ -206,14 +211,15 @@ namespace EMS.Controllers
 
             data.ALLOWBMSALARY =Convert.ToBoolean(fc["ALLOWBMSALARY"]);
             data.EDUCATIONALQUALIFICATION = fc["EDUCATIONALQUALIFICATION"];
-            //data.MARITALSTATUS = Convert.ToDecimal(fc["MARITALSTATUS"]);
+            data.MARITALSTATUS =Convert.ToBoolean(fc["MARITALSTATUS"]);
+            data.MARITALSTATUS = (maritalStatus == "true") ? true : false;           
             //data.SHIFTID = Convert.ToDecimal(fc["ADDITIONAL"]);
             data.EMPTYPEID = Convert.ToInt16(fc["EMPTYPEID"]);
             data.TINNO = fc["TINNO"];
             data.NID = fc["NID"];
             data.RELIGIONID =Convert.ToInt16(fc["RELIGIONID"]);
 
-            //data.PFPARCENT =Convert.ToDecimal(fc["PFPARCENT"]);
+            data.PFPARCENT =Convert.ToDecimal(fc["PFPARCENT"]);
             data.EMAIL = fc["EMAIL"];
             //data.DEVISIONID =Convert.ToInt32(fc["DEVISIONID"]);
             //data.HELDUPDATE =Convert.ToDateTime(fc["HELDUPDATE"]);

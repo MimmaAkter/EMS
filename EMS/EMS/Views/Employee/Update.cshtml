@@ -6,7 +6,7 @@
     ViewBag.Title = "Update";         
 }
 
-<h2>Update</h2>
+@*<h2>Update</h2>*@
 @using (Html.BeginForm("Update", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -19,238 +19,181 @@
                             <li class="active"><a href="#description">Basic Information</a></li>
                             <li><a href="#Personal">Personal Information</a></li>
                             <li><a href="#Salary">Salary Details</a></li>
-                            @*<li><a href="#PF">PF Details</a></li>*@ 
-                            <li><a href="#Photo">Upload Photo</a></li>                     
-                        </ul>                        
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            @*<li><a href="#PF">PF Details</a></li>*@
+                            <li><a href="#Photo">Upload Photo</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content custom-product-edit">
+                            <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div id="dropzone1" class="pro-ad">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
                                                             <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
-                                                            </div>
-                                                            <div class="form-group data-custon-pick" id="data_1">
-                                                                <div class="input-group date">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    @Html.EditorFor(model => model.JOININGDATE, new { htmlAttributes = new { @class = "form-control", @name = "JOININGDATE", @type = "text", @placeholder = "Joining Date" } })
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.DropDownListFor(model => model.DEPARTMENTID, Model.DepartmentList as SelectList, "Department", new { @class = "form-control", @name = "DEPARTMENTID" })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPSTATUS, new { htmlAttributes = new { @class = "form-control", @name = "EMPSTATUS", @type = "text", @placeholder = "Employee Status" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.ServiceLength, new { htmlAttributes = new { @class = "form-control", @name = "ServiceLength", @type = "text", @placeholder = "Date of Birth" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EDUCATIONALQUALIFICATION, new { htmlAttributes = new { @class = "form-control", @name = "EDUCATIONALQUALIFICATION", @type = "text", @placeholder = "Date of Birth" } })
+                                                                @Html.DisplayFor(model => model.ServiceLength,new { @class = "form-control", @name = "ServiceLength", @type = "text", @style = "color:#00BFFF" })
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPPASSWORD, new { htmlAttributes = new { @class = "form-control", @name = "EMPPASSWORD", @type = "password", @placeholder = "Password" } })
-                                                            </div>
-                                                            <div class="form-group alert-up-pd">
-                                                                <div class="dz-message needsclick download-custom">
-                                                                    @*@{
-                                                        String img64 = Convert.ToBase64String(@Model.PHOTO);
-                                                        String img64Url = string.Format("data:image/" + @Model.ImageFile + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
-                                                        @Model.ImageUrl= img64Url;
-                                                    }*@
-                                                                    <input type="file" class="form-control" id="image" name="image" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Employee ID</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMPLOYEEID, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEEID", @type = "text", @placeholder = "Employee ID" } })
                                                                 </div>
                                                             </div>
-                                                            <div class="sparkline16-graph">
-                                                                <div class="date-picker-inner">
-                                                                    <div class="form-group data-custon-pick" id="data_1">
-                                                                        <div class="input-group date">
-                                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                            @Html.EditorFor(model => model.RESIGNDATE, new { htmlAttributes = new { @class = "form-control", @name = "RESIGNDATE", @type = "text", @placeholder = "Resign Date" } })
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Employee Name</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control", @name = "EMPLOYEENAME", @type = "text", @placeholder = "Employee Name" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group data-custon-pick" id="data_1">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Joining Date</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    <div class="input-group date">
+                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                        @Html.EditorFor(model => model.JOININGDATE, new { htmlAttributes = new { @class = "form-control", @name = "JOININGDATE", @type = "text", @placeholder = "Joining Date" } })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Department</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.DEPARTMENTID, Model.DepartmentList as SelectList, "Department", new { @class = "form-control", @name = "DEPARTMENTID" })
+                                                                </div>
+                                                            </div>
+
+                                                        </div>                                                                                                      
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Qualification</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.TextAreaFor(model => model.EDUCATIONALQUALIFICATION, new { htmlAttributes = new { @class = "form-control", @name = "EDUCATIONALQUALIFICATION", @type = "text", @placeholder = "Date of Birth" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Employee Status</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMPSTATUS, new { htmlAttributes = new { @class = "form-control", @name = "EMPSTATUS", @type = "text", @placeholder = "Employee Status" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Password</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMPPASSWORD, new { htmlAttributes = new { @class = "form-control", @name = "EMPPASSWORD", @type = "password", @placeholder = "Password" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group alert-up-pd">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Photo</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    <div class="dz-message needsclick download-custom">
+                                                                        <input type="file" class="form-control" id="image" name="image" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sparkline16-graph">
+                                                            <div class="date-picker-inner">
+                                                                <div class="form-group data-custon-pick" id="data_1">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                            <label class="login2 pull-right pull-right-pro">Resign Date</label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="input-group date">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                @Html.EditorFor(model => model.RESIGNDATE, new { htmlAttributes = new { @class = "form-control", @name = "RESIGNDATE", @type = "text", @placeholder = "Resign Date" } })
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownListFor(model => model.DESIGNATIONID, Model.DesignationList as SelectList, "Designation", new { @class = "form-control", @name = "DESIGNATIONID" })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EXPERIENCE, new { htmlAttributes = new { @class = "form-control", @name = "EXPERIENCE", @type = "text", @placeholder = "Experience" } })
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="payment-adress">
-                                                                <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-tab-list tab-pane fade" id="Personal">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.FATHERSNAME, new { htmlAttributes = new { @class = "form-control", @name = "FATHERSNAME", @type = "text", @placeholder = "Father's Name" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.MOTHERSNAME, new { htmlAttributes = new { @class = "form-control", @name = "MOTHERSNAME", @type = "text", @placeholder = "Mother's Name" } })
-                                                            </div>
-                                                            <div class="form-group data-custon-pick" id="data_1">
-                                                                <div class="input-group date">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @name = "DOB", @type = "text", @placeholder = "Date of Birth" } })
+                                                        <div class="form-group res-mg-t-15">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Designation</label>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMPCONTACTNO, new { htmlAttributes = new { @class = "form-control", @name = "EMPCONTACTNO", @type = "text", @placeholder = "Contact No" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EMPPRESADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Experience" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.DropDownListFor(model => model.SEX, Model.GenderList as SelectList, "Gender", new { @class = "form-control", @name = "SEX" })
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.MARITALSTATUS, new { htmlAttributes = new { @class = "form-control", @name = "MARITALSTATUS", @type = "text", @placeholder = "Marital Status" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.SPOUSENAME, new { htmlAttributes = new { @class = "form-control", @name = "SPOUSENAME", @type = "text", @placeholder = "Spouse Name" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.NID, new { htmlAttributes = new { @class = "form-control", @name = "NID", @type = "text", @placeholder = "National Id" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "EMAIL", @type = "mail", @placeholder = "Email" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.TextAreaFor(model => model.EMPPARADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPARADDRESS", @type = "text", @placeholder = "Experience" } })
-                                                            </div>
-                                                            <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownListFor(model => model.RELIGIONID, Model.ReligionList as SelectList, "Religion", new { @class = "form-control", @name = "RELIGIONID" })
-                                                            </div>
-                                                            <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownListFor(model => model.BLOODGROUPID, Model.BloodList as SelectList, "Blood Group", new { @class = "form-control", @name = "BLOODGROUPID" })
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="payment-adress">
-                                                                <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-tab-list tab-pane fade" id="Salary">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wages" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "number", @placeholder = "Basic Salary" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.HOUSERENT, new { htmlAttributes = new { @class = "form-control", @name = "HOUSERENT", @type = "text", @placeholder = "House Rent" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.MEDICAL, new { htmlAttributes = new { @class = "form-control", @name = "MEDICAL", @type = "text", @placeholder = "Medical" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.CONVEYANCE, new { htmlAttributes = new { @class = "form-control", @name = "CONVEYANCE", @type = "text", @placeholder = "Conveyance" } })
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.PFPARCENT, new { htmlAttributes = new { @class = "form-control", @name = "PFPARCENT", @type = "text", @placeholder = "PF %" } })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.PROVIDENTFUND, new { htmlAttributes = new { @class = "form-control", @name = "MEDICAL", @type = "text", @placeholder = "PF" } })
-                                                            </div>
-                                                            <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownListFor(model => model.PAYMENTTYPEID, Model.BankList as SelectList, "Payment Type", new { @class = "form-control", @name = "PAYMENTTYPEID" })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.ACCOUNTNO, new { htmlAttributes = new { @class = "form-control", @name = "ACCOUNTNO", @type = "text", @placeholder = "Account No" } })
-                                                            </div>
-                                                            <div class="form-group res-mg-t-15">
-                                                                @Html.DropDownListFor(model => model.BANKID, Model.BankList as SelectList, "Bank", new { @class = "form-control", @name = "BANKID" })
-                                                            </div>
-                                                            <div class="form-group">
-                                                                @Html.EditorFor(model => model.BRANCHNAME, new { htmlAttributes = new { @class = "form-control", @name = "BRANCHNAME", @type = "text", @placeholder = "Branch Name" } })
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.DESIGNATIONID, Model.DesignationList as SelectList, "Designation", new { @class = "form-control", @name = "DESIGNATIONID" })
+                                                                </div>
                                                             </div>
 
-                                                            <div class="form-group data-custon-pick" id="data_1">
-                                                                <div class="input-group date">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    @Html.EditorFor(model => model.PFEFFECTEDDATE, new { htmlAttributes = new { @class = "form-control", @name = "PFEFFECTEDDATE", @type = "text", @placeholder = "Date of Birth" } })
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Experience</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.TextAreaFor(model => model.EXPERIENCE, new { htmlAttributes = new { @class = "form-control", @name = "EXPERIENCE", @type = "text", @placeholder = "Experience" } })
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="payment-adress">
-                                                                <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
-                                                                <a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Status</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <label class="radio-inline">
+                                                                            @Html.RadioButtonFor(model => model.STATUS, true, new { @name = "STATUS" })
+                                                                            Active
+                                                                        </label>
+                                                                        <label class="radio-inline">
+                                                                            @Html.RadioButtonFor(model => model.STATUS, false, new { @name = "STATUS" })
+                                                                            Inactive
+                                                                        </label>
+
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-tab-list tab-pane fade" id="Photo">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <div class="devit-card-custom">
-                                                            <div class="form-group alert-up-pd">
-                                                                <div class="dz-message needsclick download-custom">
-                                                                    <input type="file" class="form-control" id="image" name="image" />
-                                                                </div>
-                                                            </div>
-                                                            @*<div class="form-group">
-                                                 @{
-                                                            String img64 = Convert.ToBase64String(@Model.PHOTO);
-                                                            String img64Url = string.Format("data:image/" + @Model.ImageFile + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
-                                                            @Model.ImageUrl= img64Url;
-                                                        }
-                                                @Html.Image(Model.ImageUrl, "")
-                                            </div>*@
-                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                        <div class="payment-adress">
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
+                                                            @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
                                                         </div>
                                                     </div>
                                                 </div>
@@ -258,12 +201,369 @@
                                         </div>
                                     </div>
                                 </div>
-                          </div>
+                            </div>
+                            <div class="product-tab-list tab-pane fade" id="Personal">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div id="dropzone1" class="pro-ad">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Fathers Name</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.FATHERSNAME, new { htmlAttributes = new { @class = "form-control", @name = "FATHERSNAME", @type = "text", @placeholder = "Father's Name" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Mother's Name</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.MOTHERSNAME, new { htmlAttributes = new { @class = "form-control", @name = "MOTHERSNAME", @type = "text", @placeholder = "Mother's Name" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group data-custon-pick" id="data_1">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Date of Birth</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    <div class="input-group date">
+                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @name = "DOB", @type = "text", @placeholder = "Date of Birth" } })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Contact No</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMPCONTACTNO, new { htmlAttributes = new { @class = "form-control", @name = "EMPCONTACTNO", @type = "text", @placeholder = "Contact No" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Present Address</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.TextAreaFor(model => model.EMPPRESADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPRESADDRESS", @type = "text", @placeholder = "Experience" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Gender</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.SEX, Model.GenderList as SelectList, "Gender", new { @class = "form-control", @name = "SEX" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Married</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">      
+                                                                    @Html.CheckBox("maritalStatus", Model.MARITALSTATUS)
+                                                                    @*@Html.CheckBoxFor(model => model.MARITALSTATUS, new { htmlAttributes = new { @class = "form-control", @name = "MARITALSTATUS", @checked = "" } })*@
+                                                                    @*<input type="checkbox" value="" checked=""> <i></i>*@
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Spouse's Name</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.SPOUSENAME, new { htmlAttributes = new { @class = "form-control", @name = "SPOUSENAME", @type = "text", @placeholder = "Spouse Name" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">National ID</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.NID, new { htmlAttributes = new { @class = "form-control", @name = "NID", @type = "text", @placeholder = "National Id" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Email</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @name = "EMAIL", @type = "mail", @placeholder = "Email" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Parmanent Address</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.TextAreaFor(model => model.EMPPARADDRESS, new { htmlAttributes = new { @class = "form-control", @name = "EMPPARADDRESS", @type = "text", @placeholder = "Experience" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group res-mg-t-15">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Religion</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.RELIGIONID, Model.ReligionList as SelectList, "Religion", new { @class = "form-control", @name = "RELIGIONID" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group res-mg-t-15">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Blood Group</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.BLOODGROUPID, Model.BloodList as SelectList, "Blood Group", new { @class = "form-control", @name = "BLOODGROUPID" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                   
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
+                                                            @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-tab-list tab-pane fade" id="Salary">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div id="dropzone1" class="pro-ad">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Gross Wages</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.GROSSWAGES, new { htmlAttributes = new { @class = "form-control", @name = "GROSSWAGES", @type = "text", @placeholder = "Gross Wages" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Basic Salary</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.BASICSALARY, new { htmlAttributes = new { @class = "form-control", @name = "BASICSALARY", @type = "number", @placeholder = "Basic Salary" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Housr Rent</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.HOUSERENT, new { htmlAttributes = new { @class = "form-control", @name = "HOUSERENT", @type = "text", @placeholder = "House Rent" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Medical</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.MEDICAL, new { htmlAttributes = new { @class = "form-control", @name = "MEDICAL", @type = "text", @placeholder = "Medical" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Conveyance</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.CONVEYANCE, new { htmlAttributes = new { @class = "form-control", @name = "CONVEYANCE", @type = "text", @placeholder = "Conveyance" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group data-custon-pick" id="data_1">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">PF Effected Date</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    <div class="input-group date">
+                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                        @Html.EditorFor(model => model.PFEFFECTEDDATE, new { htmlAttributes = new { @class = "form-control", @name = "PFEFFECTEDDATE", @placeholder = "dd/mm/yyyy" } })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">PF Percent</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.PFPARCENT, new { htmlAttributes = new { @class = "form-control", @name = "PFPARCENT", @type = "text", @placeholder = "PF %" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">PF</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.PROVIDENTFUND, new { htmlAttributes = new { @class = "form-control", @name = "MEDICAL", @type = "number", @placeholder = "PF" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group res-mg-t-15">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Payment Type</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.PAYMENTTYPEID, Model.PaymenttypeList as SelectList, "Payment Type", new { @class = "form-control", @name = "PAYMENTTYPEID" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Account No</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.ACCOUNTNO, new { htmlAttributes = new { @class = "form-control", @name = "ACCOUNTNO", @type = "text", @placeholder = "Account No" } })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group res-mg-t-15">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Bank</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.DropDownListFor(model => model.BANKID, Model.BankList as SelectList, "Bank", new { @class = "form-control", @name = "BANKID" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    <label class="login2 pull-right pull-right-pro">Branch Name</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                    @Html.EditorFor(model => model.BRANCHNAME, new { htmlAttributes = new { @class = "form-control", @name = "BRANCHNAME", @type = "text", @placeholder = "Branch Name" } })
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
+                                                            @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-tab-list tab-pane fade" id="Photo">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="devit-card-custom">
+                                                        <div class="form-group alert-up-pd">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="profile-img">
+                                                                        @*<img src="@img64Url" alt="Hello" />*@
+                                                                        @{
+                                                                            if (Convert.IsDBNull(@Model.PHOTO))
+                                                                            {
+                                                                                String img64 = Convert.ToBase64String(@Model.PHOTO);
+                                                                                String img64Url = string.Format("data:image/" + @Model.ImageFile + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                                                                                @Html.Image(@img64Url, "Upload Photo")
+                                                                            }
+
+                                                                        }                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="dz-message needsclick download-custom">
+                                                                        <input type="file" class="form-control" id="image" name="image" />
+                                                                    </div>
+                                                                </div>                                                           
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light" onclick="Update()">Update</button>
+                                                                    @*<a class="btn btn-primary waves-effect waves-light" href="~/Views/Employee/Index.cshtml">Cancel</a>*@
+                                                                </div>
+                                                            </div>
+                                                        </div>                                               
+                                                        @*<button type="submit" class="btn btn-primary waves-effect waves-light">Upload</button>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                 </div>
+              </div>
+           </div>
         </div>
-    </div>
 }
 
 

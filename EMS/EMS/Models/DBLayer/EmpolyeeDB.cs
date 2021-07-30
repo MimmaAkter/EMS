@@ -145,10 +145,15 @@ namespace EMS.Models.DBLayer
             foreach (DataRow dr in dt.Rows)
             {
                 byte[] _photo = null;
+                //bool _maritalStatus = false;
                 if (!Convert.IsDBNull(dr["PHOTO"]))
                 {
                     _photo = (byte[])dr["PHOTO"];
                 }
+                //if (dr["MARITALSTATUS"]!=null)
+                //{
+                //    _maritalStatus = true;
+                //}
                 employeelist.Add(
                     new EmployeeB
                     {
@@ -157,33 +162,36 @@ namespace EMS.Models.DBLayer
                         //EMPLOYEENAME = dr["EMPLOYEENAME"] == DBNull.Value ? string.Empty : Convert.ToString(dr["EMPLOYEENAME"]),
                         //DEPARTMENTID = dr["DEPARTMENTID"] == DBNull.Value ? string.Empty : Convert.ToString(dr["DEPARTMENTID"]),
                         DESIGNATIONID = Convert.ToString(dr["DESIGNATIONID"]),
-                        EMPCONTACTNO = Convert.ToString(dr["EMPCONTACTNO"]),
+                        EMPCONTACTNO = Convert.IsDBNull(dr["EMPCONTACTNO"]) ? string.Empty: Convert.ToString(dr["EMPCONTACTNO"]),
                         EMPLOYEEID = Convert.ToString(dr["EMPLOYEEID"]),
                         //(_dob.Text == string.Empty ? "NULL" : "'" + _dob.Date.ToString("dd-MMM-yyyy") + "'") +
                         EMPLOYEENAME = Convert.ToString(dr["EMPLOYEENAME"]),
                         DEPARTMENTID = Convert.ToString(dr["DEPARTMENTID"]),
-                        EMPPARADDRESS = Convert.ToString(dr["EMPPARADDRESS"]),
+                        EMPPARADDRESS = Convert.IsDBNull(dr["EMPPARADDRESS"]) ? string.Empty : Convert.ToString(dr["EMPPARADDRESS"]),
                         EMPPRESADDRESS = Convert.ToString(dr["EMPPRESADDRESS"]),
-                        EXPERIENCE = Convert.ToString(dr["EXPERIENCE"]),
-                        ACCOUNTNO = Convert.ToString(dr["ACCOUNTNO"]),
+                        EXPERIENCE = Convert.IsDBNull(dr["EXPERIENCE"]) ? string.Empty : Convert.ToString(dr["EXPERIENCE"]),
+                        ACCOUNTNO = Convert.IsDBNull(dr["ACCOUNTNO"]) ? string.Empty : Convert.ToString(dr["ACCOUNTNO"]),
                         BANKID = Convert.ToString(dr["BANKID"]),
-                        BASICSALARY = Convert.ToDecimal(dr["BASICSALARY"]),
+                        BASICSALARY = Convert.IsDBNull(dr["BASICSALARY"]) ? 0 : Convert.ToDecimal(dr["BASICSALARY"]),
                         BLOODGROUPID = Convert.ToInt16(dr["BLOODGROUPID"]),
                         DOB = Convert.ToDateTime(dr["DOB"]),
-                        FATHERSNAME = Convert.ToString(dr["FATHERSNAME"]),
-                        MOTHERSNAME = Convert.ToString(dr["MOTHERSNAME"]),
-                        SPOUSENAME = Convert.ToString(dr["SPOUSENAME"]),
-                        HOUSERENT = Convert.ToDecimal(dr["HOUSERENT"]),
-                        GROSSWAGES = Convert.ToDecimal(dr["GROSSWAGES"]),
-                        NID = Convert.ToString(dr["NID"]),
-                        SEX = dr["SEX"] == DBNull.Value ? string.Empty : Convert.ToString(dr["SEX"]),
+                        FATHERSNAME = Convert.IsDBNull(dr["FATHERSNAME"]) ? string.Empty : Convert.ToString(dr["FATHERSNAME"]),
+                        MOTHERSNAME = Convert.IsDBNull(dr["MOTHERSNAME"]) ? string.Empty : Convert.ToString(dr["MOTHERSNAME"]),
+                        SPOUSENAME = Convert.IsDBNull(dr["SPOUSENAME"]) ? string.Empty : Convert.ToString(dr["SPOUSENAME"]),
+                        //MARITALSTATUS= (dr["MARITALSTATUS"] == null) ? false : Convert.ToBoolean(dr["MARITALSTATUS"]),
+                        MARITALSTATUS= Convert.IsDBNull(dr["MARITALSTATUS"])?false:Convert.ToBoolean(dr["MARITALSTATUS"]),
+                        HOUSERENT = Convert.IsDBNull(dr["HOUSERENT"]) ? 0 : Convert.ToDecimal(dr["HOUSERENT"]),
+                        GROSSWAGES = Convert.IsDBNull(dr["GROSSWAGES"]) ? 0 : Convert.ToDecimal(dr["GROSSWAGES"]),
+                        NID = Convert.IsDBNull(dr["NID"]) ? string.Empty : Convert.ToString(dr["NID"]),
+                        SEX = Convert.IsDBNull(dr["SEX"]) ? string.Empty : Convert.ToString(dr["SEX"]),
                         RELIGIONID = Convert.ToInt16(dr["RELIGIONID"]),
-                        MEDICAL = Convert.ToDecimal(dr["MEDICAL"]),
+                        MEDICAL = Convert.IsDBNull(dr["MEDICAL"]) ? 0: Convert.ToDecimal(dr["MEDICAL"]),
                         ServiceLength = Convert.ToString(dr["ServiceLength"]),
                         JOININGDATE = Convert.ToDateTime(dr["JOININGDATE"]),
                         //RGNSUBDATE = Convert.ToDateTime(dr["RGNSUBDATE"]) == string.Empty ? null : Convert.ToDateTime(dr["RGNSUBDATE"]),
-                        EMPPASSWORD = Convert.ToString(dr["EMPPASSWORD"]),
-                        EMPSTATUS = Convert.ToString(dr["EMPSTATUS"]),
+                        EMPPASSWORD = Convert.IsDBNull(dr["EMPPASSWORD"]) ? string.Empty : Convert.ToString(dr["EMPPASSWORD"]),
+                        EMPSTATUS = Convert.IsDBNull(dr["EMPSTATUS"]) ? string.Empty : Convert.ToString(dr["EMPSTATUS"]),
+                        STATUS= Convert.IsDBNull(dr["STATUS"])?false:Convert.ToBoolean(dr["STATUS"]),
                         //ImageUrl = "data:Image/png;base64" + Convert.ToBase64String(PHOTO)
                         //PHOTO = dr["PHOTO"] is DBNull ? null : Convert.tois(dr["PHOTO"])
                         PHOTO=_photo
